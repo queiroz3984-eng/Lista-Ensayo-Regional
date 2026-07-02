@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Asistencia al Ensayo de Orquesta Regional</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            margin: 20px;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #000000;
+        }
+        .outer-border {
+            border: 2px solid #000000;
+            padding: 15px;
+            width: 100%;
+            max-width: 800px;
+            background-color: #ffffff;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .header-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        .header-logo {
+            text-align: center;
+            width: 40%;
+        }
+        .logo-box {
+            border: 2px solid #000000;
+            padding: 5px;
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+        }
+        /* Mantém a proporção do logo sem distorcer o cabeçalho */
+        .logo-box img {
+            max-width: 100%;
+            max-height: 60px;
+            display: block;
+            margin: 0 auto;
+        }
+        .form-id {
+            text-align: right;
+            vertical-align: top;
+            font-weight: bold;
+            font-size: 10pt;
+            width: 30%;
+        }
+        .title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 14pt;
+            margin: 15px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .meta-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .meta-field {
+            font-weight: bold;
+        }
+        .meta-field input {
+            border: none;
+            border-bottom: 1px solid #000000;
+            font-size: 12pt;
+            padding: 2px;
+            font-weight: normal;
+            outline: none;
+        }
+        .congregaciones-section {
+            border: 1px solid #000000;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        .section-title {
+            font-style: italic;
+            font-weight: bold;
+            font-size: 10.5pt;
+            margin-bottom: 8px;
+        }
+        .congregaciones-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+        }
+        .congregaciones-col {
+            display: flex;
+            align-items: center;
+        }
+        .congregaciones-col span {
+            font-size: 14px;
+            margin-right: 5px;
+            font-weight: bold;
+        }
+        .congregaciones-col input {
+            width: 90%;
+            border: none;
+            border-bottom: 1px solid #a0a0a0;
+            font-size: 11pt;
+            outline: none;
+        }
+        .main-columns {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .left-column {
+            width: 49%;
+            border: 1px solid #000000;
+            padding: 10px;
+        }
+        .right-content-column {
+            width: 49%;
+        }
+        .right-box-section {
+            border: 1px solid #000000;
+            padding: 10px;
+            margin-bottom: 13px;
+        }
+        .instrumentos-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .instrumentos-table th {
+            border: 1px solid #000000;
+            padding: 4px;
+            font-size: 9.5pt;
+            background-color: #f5f5f5;
+        }
+        .instrumentos-table td {
+            padding: 3px 2px;
+            font-size: 10.5pt;
+            vertical-align: middle;
+        }
+        .instrumentos-table input[type="number"] {
+            width: 45px;
+            height: 24px;
+            text-align: center;
+            border: 1px solid #000000;
+            font-size: 11pt;
+            font-weight: bold;
+        }
+        .total-section {
+            margin-top: 15px;
+            border-top: 2px dashed #000000;
+            padding-top: 10px;
+            text-align: right;
+        }
+        .total-box {
+            display: inline-block;
+            font-weight: bold;
+        }
+        .total-box input {
+            width: 65px;
+            height: 30px;
+            text-align: center;
+            border: 1px solid #000000;
+            font-size: 13pt;
+            font-weight: bold;
+            background-color: #eefdf4;
+            margin-left: 10px;
+        }
+        .checkbox-group {
+            margin-bottom: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .checkbox-item {
+            font-size: 10pt;
+            display: flex;
+            align-items: center;
+        }
+        .checkbox-item input {
+            margin-right: 3px;
+        }
+        .signature-line {
+            margin-top: 8px;
+            font-size: 10pt;
+        }
+        .signature-line input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #000000;
+            padding: 2px;
+            outline: none;
+        }
+        .ministros-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .ministros-table td {
+            padding: 5.5px 2px;
+            font-size: 10.5pt;
+        }
+        .ministros-table input[type="number"] {
+            width: 40px;
+            height: 22px;
+            text-align: center;
+            border: 1px solid #000000;
+            font-weight: bold;
+        }
+        .observaciones-section {
+            border: 1px solid #000000;
+            padding: 10px;
+        }
+        .observaciones-header {
+            text-align: center;
+            font-weight: bold;
+            font-size: 11pt;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #000000;
+            padding-bottom: 3px;
+        }
+        .obs-grid {
+            display: flex;
+            justify-content: space-between;
+        }
+        .obs-cell {
+            width: 49%;
+        }
+        .obs-line {
+            margin-bottom: 8px;
+            font-size: 10.5pt;
+        }
+        .obs-line input {
+            border: none;
+            border-bottom: 1px solid #000000;
+            outline: none;
+            font-size: 11pt;
+        }
+        .footer-tag {
+            text-align: right;
+            font-size: 8pt;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="outer-border">
+    
+    <table class="header-table">
+        <tr>
+            <td style="width:30%;"></td>
+            <td class="header-logo">
+                <div class="logo-box">
+                    <!-- Substitua o src abaixo pelo link da sua imagem de logo -->
+                    <img src="LINK_DA_SUA_IMAGEM_AQUI" alt="Logo Congregación Cristiana">
+                </div>
+            </td>
+            <td class="form-id">F 03 M</td>
+        </tr>
+    </table>
+
+    <div class="title">Asistencia al Ensayo de Orquesta Regional</div>
+
+    <div class="meta-container">
+        <div class="meta-field" style="width: 65%;">
+            CONGREGACIÓN: <input type="text" style="width: 70%;" data-key="meta/congregacion" value="Sarandí">
+        </div>
+        <div class="meta-field" style="width: 35%; text-align: right;">
+            FECHA: <input type="text" style="width: 60%; text-align: center;" data-key="meta/fecha" value="14/06/26">
+        </div>
+    </div>
+
+    <div class="congregaciones-section">
+        <div class="section-title">Congregaciones participantes:</div>
+        <div class="congregaciones-grid">
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c1" value="Sarandí"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c2" value="Lomas de Guernica"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c3" value="Laferrere"></div>
+            
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c4" value="Capital"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c5" value="Moreno"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c6" value="Uruguayana"></div>
+            
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c7" value="Villa Lynch"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c8" value="José C. Paz"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c9" value="Foz do Iguaçu"></div>
+            
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c10" value="Villa Tesei"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c11" value="Domselaar"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c12" value="Porto Alegre"></div>
+            
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c13" value="Guernica"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c14" value="Caseros"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c15"></div>
+        </div>
+    </div>
+
+    <div class="main-columns">
+        <div class="left-column">
+            <table class="instrumentos-table">
+                <tr>
+                    <th style="text-align: left;">Músicos<br>Ejecutando</th>
+                    <th style="width: 50px;">Cant.</th>
+                    <th style="text-align: left; padding-left: 10px;">Instrumento</th>
+                    <th style="width: 50px;">Cant.</th>
+                </tr>
+                <tr>
+                    <td>Organistas</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/organistas" value="18"></td>
+                    <td style="padding-left: 10px;">Saxo-Tenor</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/saxo_tenor" value="0"></td>
+                </tr>
+                <tr>
+                    <td>Organistas Musicistas</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/organistas_musicistas" value="18"></td>
+                    <td style="padding-left: 10px;">Saxo-Barítono</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/saxo_baritono" value="0"></td>
+                </tr>
+                <tr>
+                    <td>Acordeones</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/acordeones" value="2"></td>
+                    <td style="padding-left: 10px;">Trompetas</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/trompetas" value="10"></td>
+                </tr>
+                <tr>
+                    <td>Violines</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/violines" value="21"></td>
+                    <td style="padding-left: 10px;">Fiscornios</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/fiscornios" value="0"></td>
+                </tr>
+                <tr>
+                    <td>Violas</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/violas" value="2"></td>
+                    <td style="padding-left: 10px;">Trompas</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/trompas" value="0"></td>
+                </tr>
+                <tr>
+                    <td>Cellos</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/cellos" value="0"></td>
+                    <td style="padding-left: 10px;">Trombonitos</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/trombonitos" value="0"></td>
+                </tr>
+                <tr>
+                    <td>Flautas</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/flautas" value="8"></td>
+                    <td style="padding-left: 10px;">Trombones</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/trombones" value="4"></td>
+                </tr>
+                <tr>
+                    <td>Clarinetes</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/clarinetes" value="6"></td>
+                    <td style="padding-left: 10px;">Bombardinos</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/bombardinos" value="2"></td>
+                </tr>
+                <tr>
+                    <td>Clarones</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/clarones" value="0"></td>
+                    <td style="padding-left: 10px;">Tuba</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/tuba" value="1"></td>
+                </tr>
+                <tr>
+                    <td>Oboes</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/oboes" value="0"></td>
+                    <td style="font-style: italic; padding-left: 10px;">Otros:</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Fagots</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/fagots" value="0"></td>
+                    <td style="padding-left: 10px;"><input type="text" data-key="instrumentos/otros1_nome" value="Sopranino" style="width:90%; border:none; border-bottom:1px solid #000; font-size:10pt;"></td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/otros1_cant" value="1"></td>
+                </tr>
+                <tr>
+                    <td>Saxo-Soprano</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/saxo_soprano" value="3"></td>
+                    <td style="padding-left: 10px;"><input type="text" data-key="instrumentos/otros2_nome" style="width:90%; border:none; border-bottom:1px solid #000;"></td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/otros2_cant" value="0"></td>
+                </tr>
+                <tr>
+                    <td>Saxo-Alto</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/saxo_alto" value="6"></td>
+                    <td style="padding-left: 10px;"><input type="text" data-key="instrumentos/otros3_nome" style="width:90%; border:none; border-bottom:1px solid #000;"></td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/otros3_cant" value="0"></td>
+                </tr>
+            </table>
+            
+            <div class="total-section">
+                <div class="total-box">
+                    Total músicos presentes: 
+                    <input type="number" id="total-musicos" readonly value="0">
+                </div>
+            </div>
+        </div>
+        
+        <div class="right-content-column">
+            <div class="right-box-section">
+                <div class="section-title" style="font-style: normal;">Presidencia del Servicio:</div>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox" data-key="presidencia/anciano" checked> Anciano</label>
+                    <label class="checkbox-item"><input type="checkbox" data-key="presidencia/cooperador"> Cooperador</label>
+                    <label class="checkbox-item"><input type="checkbox" data-key="presidencia/otros"> Otros (indicar)</label>
+                </div>
+                <div class="signature-line">
+                    <input type="text" data-key="presidencia/nombre" value="Laerte Tolentino" style="font-weight: bold; font-size: 11pt;">
+                </div>
+            </div>
+
+            <div class="right-box-section">
+                <div class="section-title" style="font-style: normal;">Dirección de la orquesta:</div>
+                <div class="signature-line">
+                    <span style="font-size: 9pt; color: #505050;">Encargados Regionales:</span>
+                    <input type="text" data-key="direccion/regionales" value="Jonatan Aguilar / Silvio" style="font-weight: bold;">
+                </div>
+                <div class="signature-line" style="margin-top: 15px;">
+                    <span style="font-size: 9pt; color: #505050;">Encargados Locales:</span>
+                    <input type="text" data-key="direccion/locales">
+                </div>
+            </div>
+
+            <div class="right-box-section" style="padding-bottom: 14px;">
+                <table class="ministros-table">
+                    <tr>
+                        <td>Ancianos:</td>
+                        <td style="text-align: right;"><input type="number" data-key="ministros/ancianos" value="4"></td>
+                    </tr>
+                    <tr>
+                        <td>Cooperadores:</td>
+                        <td style="text-align: right;"><input type="number" data-key="ministros/cooperadores" value="0"></td>
+                    </tr>
+                    <tr>
+                        <td>Cooperadores de Jóvenes:</td>
+                        <td style="text-align: right;"><input type="number" data-key="ministros/cooperadores_jovenes" value="2"></td>
+                    </tr>
+                    <tr>
+                        <td>Diáconos:</td>
+                        <td style="text-align: right;"><input type="number" data-key="ministros/diaconos" value="2"></td>
+                    </tr>
+                    <tr>
+                        <td>Encargados Regionales de Orquesta:</td>
+                        <td style="text-align: right;"><input type="number" data-key="ministros/encargados_regionales" value="4"></td>
+                    </tr>
+                    <tr>
+                        <td>Examinadoras:</td>
+                        <td style="text-align: right;"><input type="number" data-key="ministros/examinadoras" value="1"></td>
+                    </tr>
+                    <tr>
+                        <td>Encargados Locales de Orquesta:</td>
+                        <td style="text-align: right;"><input type="number" data-key="ministros/encargados_locales" value="3"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="observaciones-section">
+        <div class="observaciones-header">OBSERVACIONES</div>
+        <div class="obs-grid">
+            <div class="obs-cell">
+                <div class="obs-line">Hermandad - Hermanas: <input type="text" data-key="observaciones/hermanas" value="67" style="width:60px; text-align:center;"></div>
+                <div class="obs-line" style="padding-left: 83px;">Hermanos: <input type="text" data-key="observaciones/hermanos" value="40" style="width:60px; text-align:center;"></div>
+                <div class="obs-line" style="font-weight: bold;">Total Músicos: <input type="text" data-key="observaciones/total_musicos" value="84" style="width:60px; text-align:center; font-weight:bold;"></div>
+                <div class="obs-line" style="font-weight: bold; border-top: 1px solid #000; padding-top: 5px;">Total Geral: <input type="text" data-key="observaciones/total_general" value="191" style="width:70px; text-align:center; font-weight:bold;"></div>
+            </div>
+            <div class="obs-cell" style="border-left: 1px dashed #000; padding-left: 15px;">
+                <div class="obs-line">Palabra: <input type="text" data-key="observaciones/palabra" value="Salmos 133" style="width:70%;"></div>
+                <div class="obs-line"><input type="text" data-key="observaciones/linea2" style="width:95%;"></div>
+                <div class="obs-line"><input type="text" data-key="observaciones/linea3" style="width:95%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-tag">Act. 2023</div>
+</div>
+
+<!-- Importando SDK do Firebase (Versão Compat do Realtime Database) -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
+
+<script>
+    // Configuração do Firebase com a sua URL fornecida
+    const firebaseConfig = {
+        databaseURL: "https://lista-ensayo-regional-default-rtdb.firebaseio.com/"
+    };
+
+    // Inicializa o Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+    
+    // Referência do nó raiz do formulário
+    const formRef = db.ref("dados_ensayo");
+
+    // Função para somar automaticamente as caixas de instrumentos
+    function calcularTotalInstrumentos() {
+        const inputs = document.querySelectorAll('.inst-count');
+        let total = 0;
+        
+        inputs.forEach(input => {
+            const val = parseInt(input.value);
+            if (!isNaN(val)) {
+                total += val;
+            }
+        });
+        
+        document.getElementById('total-musicos').value = total;
+    }
+
+    // Adiciona o monitoramento local para recalcular o total
+    document.querySelectorAll('.inst-count').forEach(input => {
+        input.addEventListener('input', calcularTotalInstrumentos);
+        input.addEventListener('change', calcularTotalInstrumentos);
+    });
+
+    // --- SINCRONIZAÇÃO COM O FIREBASE ---
+
+    // 1. Enviar alterações para o Firebase em tempo real
+    document.querySelectorAll('[data-key]').forEach(element => {
+        const eventType = (element.type === 'checkbox' || element.type === 'number') ? 'change' : 'input';
+        
+        element.addEventListener(eventType, (e) => {
+            const key = e.target.getAttribute('data-key');
+            let value;
+
+            if (e.target.type === 'checkbox') {
+                value = e.target.checked;
+            } else if (e.target.type === 'number') {
+                value = parseInt(e.target.value) || 0;
+            } else {
+                value = e.target.value;
+            }
+
+            formRef.child(key).set(value);
+        });
+    });
+
+    // 2. Receber alterações do Firebase
+    formRef.on('value', (snapshot) => {
+        const data = snapshot.val();
+        if (!data) return;
+
+        document.querySelectorAll('[data-key]').forEach(element => {
+            const keyPath = element.getAttribute('data-key').split('/');
+            
+            let val = data;
+            for (let part of keyPath) {
+                if (val && val[part] !== undefined) {
+                    val = val[part];
+                } else {
+                    val = null;
+                    break;
+                }
+            }
+
+            if (val !== null) {
+                if (element.type === 'checkbox') {
+                    element.checked = val;
+                } else {
+                    element.value = val;
+                }
+            }
+        });
+
+        calcularTotalInstrumentos();
+    });
+
+    window.onload = calcularTotalInstrumentos;
+</script>
+
+</body>
+</html>
