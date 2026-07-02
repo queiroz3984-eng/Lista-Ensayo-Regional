@@ -34,16 +34,15 @@
             width: 40%;
         }
         .logo-box {
-            border: 2px solid #000000;
-            padding: 5px;
             display: inline-block;
             text-align: center;
             vertical-align: middle;
         }
-        /* Mantém a proporção do logo sem distorcer o cabeçalho */
+        /* Ajusta o tamanho da imagem do logo mantendo a proporção */
         .logo-box img {
             max-width: 100%;
-            max-height: 60px;
+            height: auto;
+            max-height: 85px;
             display: block;
             margin: 0 auto;
         }
@@ -257,8 +256,8 @@
             <td style="width:30%;"></td>
             <td class="header-logo">
                 <div class="logo-box">
-                    <!-- Substitua o src abaixo pelo link da sua imagem de logo -->
-                    <img src="LINK_DA_SUA_IMAGEM_AQUI" alt="Logo Congregación Cristiana">
+                    <!-- Imagem logo.png aplicada no cabeçalho -->
+                    <img src="logo.png" alt="Congregación Cristiana en la Argentina">
                 </div>
             </td>
             <td class="form-id">F 03 M</td>
@@ -478,24 +477,19 @@
     <div class="footer-tag">Act. 2023</div>
 </div>
 
-<!-- Importando SDK do Firebase (Versão Compat do Realtime Database) -->
+<!-- Importando SDK do Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 
 <script>
-    // Configuração do Firebase com a sua URL fornecida
     const firebaseConfig = {
         databaseURL: "https://lista-ensayo-regional-default-rtdb.firebaseio.com/"
     };
 
-    // Inicializa o Firebase
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
-    
-    // Referência do nó raiz do formulário
     const formRef = db.ref("dados_ensayo");
 
-    // Função para somar automaticamente as caixas de instrumentos
     function calcularTotalInstrumentos() {
         const inputs = document.querySelectorAll('.inst-count');
         let total = 0;
@@ -510,15 +504,12 @@
         document.getElementById('total-musicos').value = total;
     }
 
-    // Adiciona o monitoramento local para recalcular o total
     document.querySelectorAll('.inst-count').forEach(input => {
         input.addEventListener('input', calcularTotalInstrumentos);
         input.addEventListener('change', calcularTotalInstrumentos);
     });
 
-    // --- SINCRONIZAÇÃO COM O FIREBASE ---
-
-    // 1. Enviar alterações para o Firebase em tempo real
+    // Enviar alterações para o Firebase
     document.querySelectorAll('[data-key]').forEach(element => {
         const eventType = (element.type === 'checkbox' || element.type === 'number') ? 'change' : 'input';
         
@@ -538,7 +529,7 @@
         });
     });
 
-    // 2. Receber alterações do Firebase
+    // Receber alterações do Firebase
     formRef.on('value', (snapshot) => {
         const data = snapshot.val();
         if (!data) return;
