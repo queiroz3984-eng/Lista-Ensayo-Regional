@@ -13,6 +13,7 @@
             padding: 0;
             background-color: #f0f0f0;
             color: #000000;
+            padding-bottom: 80px;
         }
         .outer-border {
             border: 2px solid #000000;
@@ -38,7 +39,6 @@
             text-align: center;
             vertical-align: middle;
         }
-        /* Ajusta o tamanho da imagem do logo mantendo a proporção */
         .logo-box img {
             max-width: 100%;
             height: auto;
@@ -90,7 +90,7 @@
         }
         .congregaciones-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 5px;
         }
         .congregaciones-col {
@@ -229,11 +229,18 @@
         .obs-cell {
             width: 49%;
         }
-        .obs-line {
+        .obs-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
             margin-bottom: 8px;
             font-size: 10.5pt;
         }
-        .obs-line input {
+        .obs-label {
+            width: 80px;
+            display: inline-block;
+        }
+        .obs-row input {
             border: none;
             border-bottom: 1px solid #000000;
             outline: none;
@@ -245,6 +252,94 @@
             font-weight: bold;
             margin-top: 5px;
         }
+        
+        /* Panel de Control de Reportes */
+        .report-panel {
+            margin: 20px auto 0 auto;
+            max-width: 800px;
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .report-panel h3 {
+            margin-top: 0;
+            border-bottom: 1px solid #4f5f6f;
+            padding-bottom: 5px;
+        }
+        .report-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .report-controls select {
+            padding: 8px;
+            font-size: 11pt;
+            border-radius: 4px;
+            min-width: 180px;
+        }
+        .btn-action {
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            font-size: 11pt;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-save { background-color: #27ae60; }
+        .btn-save:hover { background-color: #219653; }
+        .btn-new { background-color: #0288d1; }
+        .btn-new:hover { background-color: #0277bd; }
+        .btn-compare { background-color: #3498db; }
+        .btn-compare:hover { background-color: #2980b9; }
+        .btn-clear { background-color: #d9534f; }
+        .btn-clear:hover { background-color: #c9302c; }
+        .btn-neutral { background-color: #7f8c8d; }
+        .btn-neutral:hover { background-color: #95a5a6; }
+
+        /* Panel de Comparación */
+        .comparison-panel {
+            margin: 20px auto 0 auto;
+            max-width: 800px;
+            background: #ffffff;
+            border: 2px solid #34495e;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: none;
+        }
+        .comparison-header-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        .comparison-panel h3 { margin: 0; color: #2c3e50; }
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .compare-table th, .compare-table td {
+            border: 1px solid #ddd;
+            padding: 6px 8px;
+            text-align: center;
+            font-size: 10.5pt;
+        }
+        .compare-table th {
+            background-color: #34495e;
+            color: white;
+        }
+        .compare-table tr:nth-child(even) { background-color: #f9f9f9; }
+        .compare-table tr.highlight-total {
+            font-weight: bold;
+            background-color: #eefdf4 !important;
+        }
+        .text-left { text-align: left !important; }
     </style>
 </head>
 <body>
@@ -256,7 +351,6 @@
             <td style="width:30%;"></td>
             <td class="header-logo">
                 <div class="logo-box">
-                    <!-- Imagem logo.png aplicada no cabeçalho -->
                     <img src="logo.png" alt="Congregación Cristiana en la Argentina">
                 </div>
             </td>
@@ -268,10 +362,10 @@
 
     <div class="meta-container">
         <div class="meta-field" style="width: 65%;">
-            CONGREGACIÓN: <input type="text" style="width: 70%;" data-key="meta/congregacion" value="Sarandí">
+            CONGREGACIÓN: <input type="text" style="width: 70%;" data-key="meta/congregacion" id="input-congregacion" value="Sarandí">
         </div>
         <div class="meta-field" style="width: 35%; text-align: right;">
-            FECHA: <input type="text" style="width: 60%; text-align: center;" data-key="meta/fecha" value="14/06/26">
+            FECHA ENSAYO: <input type="text" id="fecha-ensayo" style="width: 60%; text-align: center; font-weight: bold; background: #fffde7;" data-key="meta/fecha" value="24/11/2024">
         </div>
     </div>
 
@@ -281,22 +375,26 @@
             <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c1" value="Sarandí"></div>
             <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c2" value="Lomas de Guernica"></div>
             <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c3" value="Laferrere"></div>
-            
             <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c4" value="Capital"></div>
             <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c5" value="Moreno"></div>
-            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c6" value="Uruguayana"></div>
             
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c6" value="Uruguayana"></div>
             <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c7" value="Villa Lynch"></div>
             <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c8" value="José C. Paz"></div>
             <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c9" value="Foz do Iguaçu"></div>
-            
             <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c10" value="Villa Tesei"></div>
+            
             <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c11" value="Domselaar"></div>
             <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c12" value="Porto Alegre"></div>
-            
             <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c13" value="Guernica"></div>
             <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c14" value="Caseros"></div>
             <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c15"></div>
+
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c16"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c17"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c18"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c19"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c20"></div>
         </div>
     </div>
 
@@ -391,7 +489,7 @@
             
             <div class="total-section">
                 <div class="total-box">
-                    Total músicos presentes: 
+                    Total listado instrumentos: 
                     <input type="number" id="total-musicos" readonly value="0">
                 </div>
             </div>
@@ -426,31 +524,31 @@
                 <table class="ministros-table">
                     <tr>
                         <td>Ancianos:</td>
-                        <td style="text-align: right;"><input type="number" data-key="ministros/ancianos" value="4"></td>
+                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/ancianos" value="4"></td>
                     </tr>
                     <tr>
                         <td>Cooperadores:</td>
-                        <td style="text-align: right;"><input type="number" data-key="ministros/cooperadores" value="0"></td>
+                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/cooperadores" value="0"></td>
                     </tr>
                     <tr>
                         <td>Cooperadores de Jóvenes:</td>
-                        <td style="text-align: right;"><input type="number" data-key="ministros/cooperadores_jovenes" value="2"></td>
+                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/cooperadores_jovenes" value="2"></td>
                     </tr>
                     <tr>
                         <td>Diáconos:</td>
-                        <td style="text-align: right;"><input type="number" data-key="ministros/diaconos" value="2"></td>
+                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/diaconos" value="2"></td>
                     </tr>
                     <tr>
                         <td>Encargados Regionales de Orquesta:</td>
-                        <td style="text-align: right;"><input type="number" data-key="ministros/encargados_regionales" value="4"></td>
+                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/encargados_regionales" value="4"></td>
                     </tr>
                     <tr>
                         <td>Examinadoras:</td>
-                        <td style="text-align: right;"><input type="number" data-key="ministros/examinadoras" value="1"></td>
+                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/examinadoras" value="1"></td>
                     </tr>
                     <tr>
                         <td>Encargados Locales de Orquesta:</td>
-                        <td style="text-align: right;"><input type="number" data-key="ministros/encargados_locales" value="3"></td>
+                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/encargados_locales" value="3"></td>
                     </tr>
                 </table>
             </div>
@@ -461,15 +559,29 @@
         <div class="observaciones-header">OBSERVACIONES</div>
         <div class="obs-grid">
             <div class="obs-cell">
-                <div class="obs-line">Hermandad - Hermanas: <input type="text" data-key="observaciones/hermanas" value="67" style="width:60px; text-align:center;"></div>
-                <div class="obs-line" style="padding-left: 83px;">Hermanos: <input type="text" data-key="observaciones/hermanos" value="40" style="width:60px; text-align:center;"></div>
-                <div class="obs-line" style="font-weight: bold;">Total Músicos: <input type="text" data-key="observaciones/total_musicos" value="84" style="width:60px; text-align:center; font-weight:bold;"></div>
-                <div class="obs-line" style="font-weight: bold; border-top: 1px solid #000; padding-top: 5px;">Total Geral: <input type="text" data-key="observaciones/total_general" value="191" style="width:70px; text-align:center; font-weight:bold;"></div>
+                <div class="obs-row">
+                    <span class="obs-label">Hermanas:</span>
+                    <input type="number" id="input-hermanas" class="calc-trigger" data-key="observaciones/hermanas" value="67" style="width:60px; text-align:center; border: 1px solid #000;">
+                </div>
+                <div class="obs-row">
+                    <span class="obs-label">Hermanos:</span>
+                    <!-- CORREGIDO: data-key alterado de observaciones/hermanas para observaciones/hermanos -->
+                    <input type="number" id="input-hermanos" class="calc-trigger" data-key="observaciones/hermanos" value="40" style="width:60px; text-align:center; border: 1px solid #000;">
+                </div>
+                <div class="obs-row">
+                    <span class="obs-label">Músicos:</span>
+                    <input type="number" id="obs-total-musicos" data-key="observaciones/total_musicos" readonly style="width:60px; text-align:center; border: 1px solid #000; background-color: #f5f5f5;">
+                </div>
+                
+                <div class="obs-row" style="font-weight: bold; border-top: 1px solid #000; padding-top: 7px; margin-top: 7px;">
+                    <span class="obs-label" style="width: 90px;">Total Geral:</span>
+                    <input type="number" id="obs-total-general" data-key="observaciones/total_general" readonly value="191" style="width:70px; text-align:center; font-weight:bold; border: 1px solid #000; background-color: #eefdf4;">
+                </div>
             </div>
             <div class="obs-cell" style="border-left: 1px dashed #000; padding-left: 15px;">
-                <div class="obs-line">Palabra: <input type="text" data-key="observaciones/palabra" value="Salmos 133" style="width:70%;"></div>
-                <div class="obs-line"><input type="text" data-key="observaciones/linea2" style="width:95%;"></div>
-                <div class="obs-line"><input type="text" data-key="observaciones/linea3" style="width:95%;"></div>
+                <div class="obs-row" style="margin-bottom: 8px;">Palabra: &nbsp;<input type="text" data-key="observaciones/palabra" value="Salmos 133" style="width:70%;"></div>
+                <div class="obs-row" style="margin-bottom: 8px;"><input type="text" data-key="observaciones/linea2" style="width:95%;"></div>
+                <div class="obs-row" style="margin-bottom: 8px;"><input type="text" data-key="observaciones/linea3" style="width:95%;"></div>
             </div>
         </div>
     </div>
@@ -477,7 +589,40 @@
     <div class="footer-tag">Act. 2023</div>
 </div>
 
-<!-- Importando SDK do Firebase -->
+<div class="report-panel">
+    <h3>Historial de Ensayos / Reportes</h3>
+    <div class="report-controls">
+        <div style="display: flex; gap: 10px; align-items: center; width: 100%;">
+            <label for="select-ensayo">Seleccionar Ensayo:</label>
+            <select id="select-ensayo" onchange="selecionarEnsayo(this.value)">
+                <option value="">Cargando historial...</option>
+            </select>
+            <button class="btn-action btn-new" onclick="criarNovoEnsayo()">Nuevo Ensayo</button>
+            <button class="btn-action btn-save" onclick="forcarSalvarDados()">Guardar Reporte</button>
+        </div>
+        
+        <div style="border-top: 1px solid #4f5f6f; padding-top: 15px; margin-top: 5px; width:100%; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+            <label>Comparar con:</label>
+            <select id="select-comparar-1"><option value="">Seleccione Ensayo A</option></select>
+            <select id="select-comparar-2"><option value="">Seleccione Ensayo B</option></select>
+            <button class="btn-action btn-compare" onclick="executarComparacao()">Comparar</button>
+        </div>
+
+        <div style="width: 100%; text-align: right; margin-top: 5px;">
+            <button class="btn-action btn-clear" onclick="limparEnsayoActual()">Borrar este Ensayo</button>
+        </div>
+    </div>
+</div>
+
+<div class="comparison-panel" id="comparison-panel">
+    <div class="comparison-header-box">
+        <h3>Resultado de la Comparación</h3>
+        <button class="btn-action btn-neutral" onclick="limparPainelComparacao()">Limpar Comparación</button>
+    </div>
+    <table class="compare-table" id="compare-table-result">
+    </table>
+</div>
+
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 
@@ -488,28 +633,98 @@
 
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
-    const formRef = db.ref("dados_ensayo");
+    
+    let dataAtualChave = "24-11-2024"; 
+    let todosEnsayosData = {}; 
 
-    function calcularTotalInstrumentos() {
-        const inputs = document.querySelectorAll('.inst-count');
-        let total = 0;
-        
-        inputs.forEach(input => {
-            const val = parseInt(input.value);
-            if (!isNaN(val)) {
-                total += val;
-            }
-        });
-        
-        document.getElementById('total-musicos').value = total;
+    function getFormRef() {
+        const chaveLimpa = dataAtualChave.replace(/[\.\/]/g, "-");
+        return db.ref("ensayos/" + chaveLimpa);
     }
 
-    document.querySelectorAll('.inst-count').forEach(input => {
-        input.addEventListener('input', calcularTotalInstrumentos);
-        input.addEventListener('change', calcularTotalInstrumentos);
+    function criarNovoEnsayo() {
+        let novaDataPrompt = prompt("Ingrese la fecha para el NUEVO ensayo (Ejemplo: 31/12/2024):");
+        if (!novaDataPrompt) return;
+
+        novaDataPrompt = novaDataPrompt.trim();
+        if (novaDataPrompt === "") {
+            alert("Fecha no válida.");
+            return;
+        }
+
+        desvincularOuvinteRealtime();
+        
+        dataAtualChave = novaDataPrompt.replace(/\//g, "-");
+        document.getElementById('fecha-ensayo').value = novaDataPrompt;
+        
+        document.querySelectorAll('[data-key]').forEach(element => {
+            if (element.id === 'fecha-ensayo') {
+                element.value = novaDataPrompt;
+            } else if (element.type === 'checkbox') {
+                element.checked = false;
+            } else if (element.type === 'number') {
+                element.value = 0;
+            } else {
+                if (element.id !== 'input-congregacion') element.value = '';
+            }
+        });
+
+        document.getElementById('select-ensayo').value = "";
+        calcularTotaisFormulario();
+        
+        vincularOuvinteRealtime();
+        alert("Formulario preparado para ingresar el ensayo de la fecha: " + novaDataPrompt + ". Complete los datos e guarde.");
+    }
+
+    function calcularTotaisFormulario() {
+        const instInputs = document.querySelectorAll('.inst-count');
+        let somaInstrumentos = 0;
+        instInputs.forEach(input => {
+            const val = parseInt(input.value);
+            if (!isNaN(val)) somaInstrumentos += val;
+        });
+        
+        document.getElementById('total-musicos').value = somaInstrumentos;
+        document.getElementById('obs-total-musicos').value = somaInstrumentos;
+        
+        const ministroInputs = document.querySelectorAll('.ministro-input');
+        let somaMinistros = 0;
+        ministroInputs.forEach(input => {
+            const val = parseInt(input.value);
+            if (!isNaN(val)) somaMinistros += val;
+        });
+        
+        const hermanas = parseInt(document.getElementById('input-hermanas').value) || 0;
+        const hermanosDigitado = parseInt(document.getElementById('input-hermanos').value) || 0;
+        
+        let totalGeral = hermanas + hermanosDigitado + somaInstrumentos + somaMinistros;
+        document.getElementById('obs-total-general').value = totalGeral;
+    }
+
+    document.getElementById('fecha-ensayo').addEventListener('change', (e) => {
+        let novaData = e.target.value.trim();
+        if(novaData !== "") {
+            desvincularOuvinteRealtime();
+            dataAtualChave = novaData;
+            
+            const selectHistorial = document.getElementById('select-ensayo');
+            const chaveLimpa = novaData.replace(/[\.\/]/g, "-");
+            if (todosEnsayosData[chaveLimpa]) {
+                selectHistorial.value = chaveLimpa;
+            } else {
+                selectHistorial.value = "";
+            }
+            
+            vincularOuvinteRealtime();
+        }
     });
 
-    // Enviar alterações para o Firebase
+    document.addEventListener('input', (e) => {
+        if (e.target.classList.contains('inst-count') || e.target.classList.contains('ministro-input') || e.target.classList.contains('calc-trigger')) {
+            calcularTotaisFormulario();
+        }
+    });
+
     document.querySelectorAll('[data-key]').forEach(element => {
         const eventType = (element.type === 'checkbox' || element.type === 'number') ? 'change' : 'input';
         
@@ -525,41 +740,321 @@
                 value = e.target.value;
             }
 
-            formRef.child(key).set(value);
-        });
-    });
-
-    // Receber alterações do Firebase
-    formRef.on('value', (snapshot) => {
-        const data = snapshot.val();
-        if (!data) return;
-
-        document.querySelectorAll('[data-key]').forEach(element => {
-            const keyPath = element.getAttribute('data-key').split('/');
+            getFormRef().child(key).set(value);
             
-            let val = data;
-            for (let part of keyPath) {
-                if (val && val[part] !== undefined) {
-                    val = val[part];
+            setTimeout(() => {
+                calcularTotaisFormulario();
+                const totalMusicos = parseInt(document.getElementById('obs-total-musicos').value) || 0;
+                const totalGeral = parseInt(document.getElementById('obs-total-general').value) || 0;
+                
+                getFormRef().child('observaciones/total_musicos').set(totalMusicos);
+                getFormRef().child('observaciones/total_general').set(totalGeral);
+            }, 150);
+        });
+    });
+
+    function forcarSalvarDados() {
+        calcularTotaisFormulario();
+        const dadosPacote = {};
+        
+        document.querySelectorAll('[data-key]').forEach(element => {
+            const key = element.getAttribute('data-key');
+            let val;
+            if (element.type === 'checkbox') {
+                val = element.checked;
+            } else if (element.type === 'number') {
+                val = parseInt(element.value) || 0;
+            } else {
+                val = element.value;
+            }
+            dadosPacote[key] = val;
+        });
+
+        getFormRef().update(reconstruirObjetoFirebase(dadosPacote))
+            .then(() => { alert("¡Reporte guardado con éxito en la base de datos!"); })
+            .catch((err) => { alert("Error al guardar: " + err.message); });
+    }
+
+    function reconstruirObjetoFirebase(objPlano) {
+        const raiz = {};
+        for (let chaveMap in objPlano) {
+            const partes = chaveMap.split('/');
+            let atual = raiz;
+            for (let i = 0; i < partes.length; i++) {
+                const p = partes[i];
+                if (i === partes.length - 1) {
+                    atual[p] = objPlano[chaveMap];
                 } else {
-                    val = null;
-                    break;
+                    atual[p] = atual[p] || {};
+                    atual = atual[p];
                 }
             }
+        }
+        return raiz;
+    }
 
-            if (val !== null) {
-                if (element.type === 'checkbox') {
-                    element.checked = val;
-                } else {
-                    element.value = val;
+    let firebaseOuvinte = null;
+
+    function desvincularOuvinteRealtime() {
+        if (firebaseOuvinte) { getFormRef().off('value', firebaseOuvinte); }
+    }
+
+    function vincularOuvinteRealtime() {
+        firebaseOuvinte = getFormRef().on('value', (snapshot) => {
+            const data = snapshot.val();
+            
+            if (!data) {
+                document.querySelectorAll('[data-key]').forEach(element => {
+                    if (element.id === 'fecha-ensayo') {
+                        element.value = dataAtualChave.replace(/-/g, "/");
+                    } else if (element.type === 'checkbox') {
+                        element.checked = false;
+                    } else if (element.type === 'number') {
+                        element.value = 0;
+                    } else {
+                        if(element.id !== 'input-congregacion') element.value = '';
+                    }
+                });
+                calcularTotaisFormulario();
+                return;
+            }
+
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const keyPath = element.getAttribute('data-key').split('/');
+                let val = data;
+                for (let part of keyPath) {
+                    if (val && val[part] !== undefined) { val = val[part]; } 
+                    else { val = null; break; }
                 }
+
+                if (val !== null) {
+                    if (element.type === 'checkbox') { element.checked = val; } 
+                    else { element.value = val; }
+                } else {
+                    if (element.id === 'fecha-ensayo') element.value = dataAtualChave.replace(/-/g, "/");
+                    else if (element.type === 'checkbox') element.checked = false;
+                    else if (element.type === 'number') element.value = 0;
+                    else element.value = '';
+                }
+            });
+
+            calcularTotaisFormulario();
+        });
+    }
+
+    function carregarHistoricoEnsayos() {
+        db.ref("ensayos").on('value', (snapshot) => {
+            const select = document.getElementById('select-ensayo');
+            const comp1 = document.getElementById('select-comparar-1');
+            const comp2 = document.getElementById('select-comparar-2');
+            
+            const valorSelecionadoAtual = select.value;
+            
+            select.innerHTML = '<option value="">-- Seleccionar ensayo para ver reporte --</option>';
+            comp1.innerHTML = '<option value="">-- Seleccionar Ensayo A --</option>';
+            comp2.innerHTML = '<option value="">-- Seleccionar Ensayo B --</option>';
+            
+            if(snapshot.exists()) {
+                todosEnsayosData = snapshot.val(); 
+                
+                snapshot.forEach((childSnapshot) => {
+                    const dataChave = childSnapshot.key;
+                    const dados = childSnapshot.val();
+                    const infoCongregacao = (dados.meta && dados.meta.congregacion) ? ` (${dados.meta.congregacion.toUpperCase()})` : '';
+                    
+                    const dataVisual = dataChave.replace(/-/g, "/");
+                    const textoOpcao = `Ensayo del ${dataVisual}${infoCongregacao}`;
+                    
+                    const option = document.createElement('option');
+                    option.value = dataChave; option.textContent = textoOpcao;
+                    select.appendChild(option);
+
+                    const optA = document.createElement('option');
+                    optA.value = dataChave; optA.textContent = textoOpcao;
+                    comp1.appendChild(optA);
+
+                    const optB = document.createElement('option');
+                    optB.value = dataChave; optB.textContent = textoOpcao;
+                    comp2.appendChild(optB);
+                });
+                
+                if (valorSelecionadoAtual) select.value = valorSelecionadoAtual;
+            } else {
+                select.innerHTML = '<option value="">No hay registros guardados</option>';
+            }
+        });
+    }
+
+    function selecionarEnsayo(chave) {
+        if(!chave) return;
+        desvincularOuvinteRealtime();
+        
+        const dataFormatada = chave.replace(/-/g, "/"); 
+        document.getElementById('fecha-ensayo').value = dataFormatada;
+        
+        dataAtualChave = dataFormatada;
+        vincularOuvinteRealtime();
+    }
+
+    function limparPainelComparacao() {
+        document.getElementById('comparison-panel').style.display = "none";
+        document.getElementById('select-comparar-1').value = "";
+        document.getElementById('select-comparar-2').value = "";
+    }
+
+    function executarComparacao() {
+        const chaveA = document.getElementById('select-comparar-1').value;
+        const chaveB = document.getElementById('select-comparar-2').value;
+
+        if (!chaveA || !chaveB) {
+            alert("Por favor, seleccione ambos ensayos para poder realizar la comparación.");
+            return;
+        }
+
+        const ensA = todosEnsayosData[chaveA] || {};
+        const ensB = todosEnsayosData[chaveB] || {};
+
+        const painel = document.getElementById('comparison-panel');
+        const tabela = document.getElementById('compare-table-result');
+
+        const mapeamentoItens = [
+            { label: "Congregación", path: "meta/congregacion", tipo: "texto" },
+            { label: "Hermanas", path: "observaciones/hermanas", tipo: "num" },
+            { label: "Hermanos", path: "observaciones/hermanos", tipo: "num" },
+            { label: "Músicos en Total", path: "observaciones/total_musicos", tipo: "num" },
+            { label: "TOTAL GENERAL", path: "observaciones/total_general", tipo: "num", cssClass: "highlight-total" },
+            { label: "--- MINISTROS ---", path: null, tipo: "titulo" },
+            { label: "Ancianos", path: "ministros/ancianos", tipo: "num" },
+            { label: "Cooperadores", path: "ministros/cooperadores", tipo: "num" },
+            { label: "Cooperadores de Jóvenes", path: "ministros/cooperadores_jovenes", tipo: "num" },
+            { label: "Diáconos", path: "ministros/diaconos", tipo: "num" },
+            { label: "Encargados Regionales de Orquesta", path: "ministros/encargados_regionales", tipo: "num" },
+            { label: "Examinadoras", path: "ministros/examinadoras", tipo: "num" },
+            { label: "Encargados Locales de Orquesta", path: "ministros/encargados_locales", tipo: "num" },
+            { label: "--- TODOS LOS INSTRUMENTOS ---", path: null, tipo: "titulo" },
+            { label: "Organistas", path: "instrumentos/organistas", tipo: "num" },
+            { label: "Organistas Musicistas", path: "instrumentos/organistas_musicistas", tipo: "num" },
+            { label: "Acordeones", path: "instrumentos/acordeones", tipo: "num" },
+            { label: "Violines", path: "instrumentos/violines", tipo: "num" },
+            { label: "Violas", path: "instrumentos/violas", tipo: "num" },
+            { label: "Cellos", path: "instrumentos/cellos", tipo: "num" },
+            { label: "Flautas", path: "instrumentos/flautas", tipo: "num" },
+            { label: "Clarinetes", path: "instrumentos/clarinetes", tipo: "num" },
+            { label: "Clarones", path: "instrumentos/clarones", tipo: "num" },
+            { label: "Oboes", path: "instrumentos/oboes", tipo: "num" },
+            { label: "Fagots", path: "instrumentos/fagots", tipo: "num" },
+            { label: "Saxo-Soprano", path: "instrumentos/saxo_soprano", tipo: "num" },
+            { label: "Saxo-Alto", path: "instrumentos/saxo_alto", tipo: "num" },
+            { label: "Saxo-Tenor", path: "instrumentos/saxo_tenor", tipo: "num" },
+            { label: "Saxo-Barítono", path: "instrumentos/saxo_baritono", tipo: "num" },
+            { label: "Trompetas", path: "instrumentos/trompetas", tipo: "num" },
+            { label: "Fiscornios", path: "instrumentos/fiscornios", tipo: "num" },
+            { label: "Trompas", path: "instrumentos/trompas", tipo: "num" },
+            { label: "Trombonitos", path: "instrumentos/trombonitos", tipo: "num" },
+            { label: "Trombones", path: "instrumentos/trombones", tipo: "num" },
+            { label: "Bombardinos", path: "instrumentos/bombardinos", tipo: "num" },
+            { label: "Tuba", path: "instrumentos/tuba", tipo: "num" },
+            { label: `Otros 1: ${pegarValorTexto(ensA, ensB, "instrumentos/otros1_nome", "Sopranino")}`, path: "instrumentos/otros1_cant", tipo: "num" },
+            { label: `Otros 2: ${pegarValorTexto(ensA, ensB, "instrumentos/otros2_nome", "Otros 2")}`, path: "instrumentos/otros2_cant", tipo: "num" },
+            { label: `Otros 3: ${pegarValorTexto(ensA, ensB, "instrumentos/otros3_nome", "Otros 3")}`, path: "instrumentos/otros3_cant", tipo: "num" }
+        ];
+
+        function pegarValor(obj, caminho) {
+            if(!caminho || !obj) return 0;
+            return caminho.split('/').reduce((acc, part) => (acc && acc[part] !== undefined) ? acc[part] : 0, obj);
+        }
+
+        function pegarValorTexto(oA, oB, caminho, padrao) {
+            let tA = pegarValor(oA, caminho);
+            let tB = pegarValor(oB, caminho);
+            return tB || tA || padrao;
+        }
+
+        let html = `
+            <tr>
+                <th class="text-left">Detalle / Sección</th>
+                <th>Ensayo A (${chaveA.replace(/-/g, "/")})</th>
+                <th>Ensayo B (${chaveB.replace(/-/g, "/")})</th>
+                <th>Diferencia</th>
+            </tr>
+        `;
+
+        mapeamentoItens.forEach(item => {
+            if (item.tipo === "titulo") {
+                html += `<tr><td colspan="4" style="background:#eaeded; font-weight:bold; text-align:left;">${item.label}</td></tr>`;
+                return;
+            }
+
+            let valA = 0, valB = 0, dif = "";
+            
+            if (item.tipo === "texto") {
+                valA = pegarValor(ensA, item.path) || "-";
+                valB = pegarValor(ensB, item.path) || "-";
+            } else {
+                valA = parseInt(pegarValor(ensA, item.path)) || 0;
+                valB = parseInt(pegarValor(ensB, item.path)) || 0;
+            }
+
+            if (item.tipo === "num") {
+                let resultadoDif = valB - valA;
+                dif = resultadoDif > 0 ? `+${resultadoDif}` : `${resultadoDif}`;
+                if (resultadoDif > 0) dif = `<span style="color:green; font-weight:bold;">${dif}</span>`;
+                if (resultadoDif < 0) dif = `<span style="color:red; font-weight:bold;">${dif}</span>`;
+            } else {
+                dif = "-";
+            }
+
+            const trClass = item.cssClass ? `class="${item.cssClass}"` : '';
+            html += `
+                <tr ${trClass}>
+                    <td class="text-left">${item.label}</td>
+                    <td>${valA}</td>
+                    <td>${valB}</td>
+                    <td>${dif}</td>
+                </tr>
+            `;
+        });
+
+        tabela.innerHTML = html;
+        painel.style.display = "block";
+        painel.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function limparEnsayoActual() {
+        if (confirm(`¿Está seguro de que desea BORRAR por completo el reporte del ensayo ${dataAtualChave.replace(/-/g, "/")}?`)) {
+            getFormRef().remove()
+                .then(() => { alert("Reporte eliminado de la base de datos."); })
+                .catch((error) => { alert("Error al eliminar."); });
+        }
+    }
+
+    window.onload = () => {
+        const chaveErrada = "10-02-2026";
+        const chaveCorreta = "24-11-2024";
+
+        db.ref("ensayos/" + chaveErrada).once('value').then((snapshot) => {
+            if (snapshot.exists()) {
+                const dadosMudar = snapshot.val();
+                if (dadosMudar.meta) {
+                    dadosMudar.meta.fecha = "24/11/2024";
+                }
+                db.ref("ensayos/" + chaveCorreta).set(dadosMudar)
+                    .then(() => {
+                        return db.ref("ensayos/" + chaveErrada).remove();
+                    })
+                    .then(() => {
+                        console.log("Migración exitosa: Registro cambiado a 24/11/2024");
+                    })
+                    .catch((err) => {
+                        console.error("Error en migración:", err);
+                    });
             }
         });
 
-        calcularTotalInstrumentos();
-    });
-
-    window.onload = calcularTotalInstrumentos;
+        dataAtualChave = document.getElementById('fecha-ensayo').value.trim().replace(/\//g, "-");
+        vincularOuvinteRealtime();
+        carregarHistoricoEnsayos();
+    };
 </script>
 
 </body>
