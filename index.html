@@ -17,9 +17,9 @@
         }
         .outer-border {
             border: 2px solid #000000;
-            padding: 15px;
+            padding: 20px;
             width: 100%;
-            max-width: 800px;
+            max-width: 850px;
             background-color: #ffffff;
             margin: 0 auto;
             position: relative;
@@ -32,7 +32,7 @@
         }
         .header-logo {
             text-align: center;
-            width: 40%;
+            width: 50%;
         }
         .logo-box {
             display: inline-block;
@@ -50,13 +50,13 @@
             text-align: right;
             vertical-align: top;
             font-weight: bold;
-            font-size: 10pt;
-            width: 30%;
+            font-size: 11pt;
+            width: 25%;
         }
         .title {
             text-align: center;
             font-weight: bold;
-            font-size: 14pt;
+            font-size: 15pt;
             margin: 15px 0;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -68,46 +68,49 @@
         }
         .meta-field {
             font-weight: bold;
+            font-size: 11pt;
         }
         .meta-field input {
             border: none;
             border-bottom: 1px solid #000000;
-            font-size: 12pt;
+            font-size: 11pt;
             padding: 2px;
             font-weight: normal;
             outline: none;
+            text-transform: uppercase;
         }
         .congregaciones-section {
             border: 1px solid #000000;
-            padding: 10px;
+            padding: 12px;
             margin-bottom: 15px;
         }
         .section-title {
             font-style: italic;
             font-weight: bold;
             font-size: 10.5pt;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         .congregaciones-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 5px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px 8px;
         }
         .congregaciones-col {
             display: flex;
             align-items: center;
         }
         .congregaciones-col span {
-            font-size: 14px;
-            margin-right: 5px;
+            font-size: 13px;
+            margin-right: 4px;
             font-weight: bold;
         }
         .congregaciones-col input {
             width: 90%;
             border: none;
             border-bottom: 1px solid #a0a0a0;
-            font-size: 11pt;
+            font-size: 10pt;
             outline: none;
+            text-transform: uppercase;
         }
         .main-columns {
             display: flex;
@@ -117,15 +120,21 @@
         .left-column {
             width: 49%;
             border: 1px solid #000000;
-            padding: 10px;
+            padding: 12px;
         }
         .right-content-column {
             width: 49%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .right-box-section {
             border: 1px solid #000000;
-            padding: 10px;
-            margin-bottom: 13px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+        .right-box-section:last-child {
+            margin-bottom: 0;
         }
         .instrumentos-table {
             width: 100%;
@@ -133,12 +142,12 @@
         }
         .instrumentos-table th {
             border: 1px solid #000000;
-            padding: 4px;
+            padding: 5px;
             font-size: 9.5pt;
             background-color: #f5f5f5;
         }
         .instrumentos-table td {
-            padding: 3px 2px;
+            padding: 4px 2px;
             font-size: 10.5pt;
             vertical-align: middle;
         }
@@ -147,7 +156,7 @@
             height: 24px;
             text-align: center;
             border: 1px solid #000000;
-            font-size: 11pt;
+            font-size: 10.5pt;
             font-weight: bold;
         }
         .total-section {
@@ -159,39 +168,42 @@
         .total-box {
             display: inline-block;
             font-weight: bold;
+            font-size: 10.5pt;
         }
         .total-box input {
-            width: 65px;
-            height: 30px;
+            width: 60px;
+            height: 28px;
             text-align: center;
             border: 1px solid #000000;
-            font-size: 13pt;
+            font-size: 11pt;
             font-weight: bold;
             background-color: #eefdf4;
-            margin-left: 10px;
+            margin-left: 8px;
         }
         .checkbox-group {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             display: flex;
-            gap: 10px;
+            gap: 12px;
+            flex-wrap: wrap;
         }
         .checkbox-item {
-            font-size: 10pt;
+            font-size: 10.5pt;
             display: flex;
             align-items: center;
         }
         .checkbox-item input {
-            margin-right: 3px;
+            margin-right: 4px;
+            transform: scale(1.05);
         }
         .signature-line {
             margin-top: 8px;
-            font-size: 10pt;
+            font-size: 10.5pt;
         }
         .signature-line input {
             width: 100%;
             border: none;
             border-bottom: 1px solid #000000;
-            padding: 2px;
+            padding: 2px 2px;
             outline: none;
         }
         .ministros-table {
@@ -199,19 +211,21 @@
             border-collapse: collapse;
         }
         .ministros-table td {
-            padding: 5.5px 2px;
+            padding: 5px 2px;
             font-size: 10.5pt;
+            vertical-align: middle;
         }
         .ministros-table input[type="number"] {
-            width: 40px;
-            height: 22px;
+            width: 42px;
+            height: 24px;
             text-align: center;
             border: 1px solid #000000;
             font-weight: bold;
+            font-size: 10.5pt;
         }
         .observaciones-section {
             border: 1px solid #000000;
-            padding: 10px;
+            padding: 12px;
         }
         .observaciones-header {
             text-align: center;
@@ -220,14 +234,14 @@
             letter-spacing: 1px;
             margin-bottom: 10px;
             border-bottom: 1px solid #000000;
-            padding-bottom: 3px;
+            padding-bottom: 4px;
         }
         .obs-grid {
             display: flex;
             justify-content: space-between;
         }
         .obs-cell {
-            width: 49%;
+            width: 48%;
         }
         .obs-row {
             display: flex;
@@ -237,109 +251,96 @@
             font-size: 10.5pt;
         }
         .obs-label {
-            width: 80px;
+            width: 85px;
             display: inline-block;
         }
         .obs-row input {
             border: none;
-            border-bottom: 1px solid #000000;
             outline: none;
-            font-size: 11pt;
+            font-size: 10.5pt;
         }
         .footer-tag {
             text-align: right;
             font-size: 8pt;
-            font-weight: bold;
-            margin-top: 5px;
+            font-weight: normal;
+            margin-top: 8px;
+            color: #333;
         }
         
-        /* Panel de Control de Reportes */
+        /* Painel Web Operacional - Estabilizado */
         .report-panel {
             margin: 20px auto 0 auto;
-            max-width: 800px;
+            max-width: 850px;
             background: #2c3e50;
             color: white;
             padding: 15px;
             border-radius: 6px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
-        .report-panel h3 {
-            margin-top: 0;
-            border-bottom: 1px solid #4f5f6f;
-            padding-bottom: 5px;
-        }
-        .report-controls {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .report-controls select {
-            padding: 8px;
-            font-size: 11pt;
-            border-radius: 4px;
-            min-width: 180px;
-        }
-        .btn-action {
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            font-size: 11pt;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .btn-save { background-color: #27ae60; }
-        .btn-save:hover { background-color: #219653; }
+        .report-panel h3 { margin-top: 0; border-bottom: 1px solid #4f5f6f; padding-bottom: 5px; font-size: 13pt; }
+        .report-controls { display: flex; flex-direction: column; gap: 12px; }
+        .control-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        .control-row label { font-size: 10.5pt; font-weight: bold; }
+        .report-controls select { padding: 6px; font-size: 10pt; border-radius: 4px; min-width: 180px; color: #000000; background-color: #ffffff; display: inline-block !important; visibility: visible !important; }
+        
+        .btn-action { color: white; border: none; padding: 7px 14px; font-size: 10pt; border-radius: 4px; cursor: pointer; font-weight: bold; }
         .btn-new { background-color: #0288d1; }
-        .btn-new:hover { background-color: #0277bd; }
+        .btn-save { background-color: #27ae60; }
+        .btn-print { background-color: #8e44ad; }
         .btn-compare { background-color: #3498db; }
-        .btn-compare:hover { background-color: #2980b9; }
         .btn-clear { background-color: #d9534f; }
-        .btn-clear:hover { background-color: #c9302c; }
-        .btn-neutral { background-color: #7f8c8d; }
-        .btn-neutral:hover { background-color: #95a5a6; }
 
-        /* Panel de Comparación */
-        .comparison-panel {
-            margin: 20px auto 0 auto;
-            max-width: 800px;
-            background: #ffffff;
-            border: 2px solid #34495e;
-            padding: 15px;
-            border-radius: 6px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            display: none;
+        /* REGRAS DE IMPRESSÃO (A4 SEM QUEBRAS) */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 8mm 10mm 6mm 10mm;
+            }
+            html, body {
+                background-color: #ffffff;
+                margin: 0;
+                padding: 0;
+                height: auto;
+            }
+            body {
+                padding-bottom: 0;
+            }
+            .outer-border {
+                box-shadow: none;
+                border: 2px solid #000000;
+                margin: 0 auto;
+                width: 100%;
+                max-width: 100%;
+                padding: 15px;
+                page-break-inside: avoid !important;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: auto;
+                max-height: 275mm;
+            }
+            .header-table { margin-bottom: 8px; }
+            .logo-box img { max-height: 75px; }
+            .title { margin: 8px 0; font-size: 14pt; }
+            .meta-container { margin-bottom: 10px; }
+            .congregaciones-section { padding: 10px; margin-bottom: 10px; }
+            .congregaciones-grid { gap: 4px 8px; }
+            .main-columns { margin-bottom: 10px; flex-grow: 1; }
+            .left-column { padding: 10px; }
+            .right-content-column { justify-content: space-between; }
+            .right-box-section { padding: 10px; margin-bottom: 8px; }
+            .right-box-section:last-child { margin-bottom: 0; }
+            .instrumentos-table td { padding: 3px 2px; font-size: 10pt; }
+            .instrumentos-table input[type="number"] { height: 22px; font-size: 10pt; }
+            .ministros-table td { padding: 4px 2px; font-size: 10pt; }
+            .ministros-table input[type="number"] { height: 22px; font-size: 10pt; }
+            .total-section { margin-top: 10px; padding-top: 8px; }
+            .observaciones-section { padding: 10px; page-break-inside: avoid; }
+            .footer-tag { margin-top: 4px; }
+            
+            .report-panel, .btn-action {
+                display: none !important;
+            }
         }
-        .comparison-header-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #34495e;
-            padding-bottom: 5px;
-            margin-bottom: 10px;
-        }
-        .comparison-panel h3 { margin: 0; color: #2c3e50; }
-        .compare-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .compare-table th, .compare-table td {
-            border: 1px solid #ddd;
-            padding: 6px 8px;
-            text-align: center;
-            font-size: 10.5pt;
-        }
-        .compare-table th {
-            background-color: #34495e;
-            color: white;
-        }
-        .compare-table tr:nth-child(even) { background-color: #f9f9f9; }
-        .compare-table tr.highlight-total {
-            font-weight: bold;
-            background-color: #eefdf4 !important;
-        }
-        .text-left { text-align: left !important; }
     </style>
 </head>
 <body>
@@ -348,7 +349,7 @@
     
     <table class="header-table">
         <tr>
-            <td style="width:30%;"></td>
+            <td style="width:25%;"></td>
             <td class="header-logo">
                 <div class="logo-box">
                     <img src="logo.png" alt="Congregación Cristiana en la Argentina">
@@ -372,29 +373,35 @@
     <div class="congregaciones-section">
         <div class="section-title">Congregaciones participantes:</div>
         <div class="congregaciones-grid">
-            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c1" value="Sarandí"></div>
-            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c2" value="Lomas de Guernica"></div>
-            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c3" value="Laferrere"></div>
-            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c4" value="Capital"></div>
-            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c5" value="Moreno"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c1" value="Capital"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c2" value="Guernica"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c3" value="Spegazzini"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c4" value="Claypole"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c5" value="Villa Toro"></div>
             
-            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c6" value="Uruguayana"></div>
-            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c7" value="Villa Lynch"></div>
-            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c8" value="José C. Paz"></div>
-            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c9" value="Foz do Iguaçu"></div>
-            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c10" value="Villa Tesei"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c6" value="Villa Lynch"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c7" value="José C. Paz"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c8" value="Gualeguaychú"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c9" value="Uruguayana"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c10" value="Laferrere"></div>
             
-            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c11" value="Domselaar"></div>
-            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c12" value="Porto Alegre"></div>
-            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c13" value="Guernica"></div>
-            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c14" value="Caseros"></div>
-            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c15"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c11" value="La Plata"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c12" value="Artigas-Uruguay"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c13" value="Lomas de Guernica"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c14" value="Itaquí"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c15" value="Alegrete"></div>
 
             <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c16"></div>
             <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c17"></div>
             <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c18"></div>
             <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c19"></div>
             <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c20"></div>
+
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c21"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c22"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c23"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c24"></div>
+            <div class="congregaciones-col"><span>•</span><input type="text" data-key="participantes/c25"></div>
         </div>
     </div>
 
@@ -403,86 +410,86 @@
             <table class="instrumentos-table">
                 <tr>
                     <th style="text-align: left;">Músicos<br>Ejecutando</th>
-                    <th style="width: 50px;">Cant.</th>
-                    <th style="text-align: left; padding-left: 10px;">Instrumento</th>
-                    <th style="width: 50px;">Cant.</th>
+                    <th style="width: 48px;">Cant.</th>
+                    <th style="text-align: left; padding-left: 8px;">Instrumento</th>
+                    <th style="width: 48px;">Cant.</th>
                 </tr>
                 <tr>
                     <td>Organistas</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/organistas" value="18"></td>
-                    <td style="padding-left: 10px;">Saxo-Tenor</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/saxo_tenor" value="0"></td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/organistas" value="28"></td>
+                    <td style="padding-left: 8px;">Saxo-Tenor</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/saxo_tenor" value="4"></td>
                 </tr>
                 <tr>
                     <td>Organistas Musicistas</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/organistas_musicistas" value="18"></td>
-                    <td style="padding-left: 10px;">Saxo-Barítono</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/saxo_baritono" value="0"></td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/organistas_musicistas" value="0"></td>
+                    <td style="padding-left: 8px;">Saxo-Barítono</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/saxo_baritono" value="1"></td>
                 </tr>
                 <tr>
                     <td>Acordeones</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/acordeones" value="2"></td>
-                    <td style="padding-left: 10px;">Trompetas</td>
+                    <td style="padding-left: 8px;">Trompetas</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/trompetas" value="10"></td>
                 </tr>
                 <tr>
                     <td>Violines</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/violines" value="21"></td>
-                    <td style="padding-left: 10px;">Fiscornios</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/violines" value="23"></td>
+                    <td style="padding-left: 8px;">Fiscornios</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/fiscornios" value="0"></td>
                 </tr>
                 <tr>
                     <td>Violas</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/violas" value="2"></td>
-                    <td style="padding-left: 10px;">Trompas</td>
+                    <td style="padding-left: 8px;">Trompas</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/trompas" value="0"></td>
                 </tr>
                 <tr>
                     <td>Cellos</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/cellos" value="0"></td>
-                    <td style="padding-left: 10px;">Trombonitos</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/trombonitos" value="0"></td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/cellos" value="2"></td>
+                    <td style="padding-left: 8px;">Trombonitos</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/trombonitos" value="1"></td>
                 </tr>
                 <tr>
                     <td>Flautas</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/flautas" value="8"></td>
-                    <td style="padding-left: 10px;">Trombones</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/flautas" value="7"></td>
+                    <td style="padding-left: 8px;">Trombones</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/trombones" value="4"></td>
                 </tr>
                 <tr>
                     <td>Clarinetes</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/clarinetes" value="6"></td>
-                    <td style="padding-left: 10px;">Bombardinos</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/bombardinos" value="2"></td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/clarinetes" value="10"></td>
+                    <td style="padding-left: 8px;">Bombardinos</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/bombardinos" value="5"></td>
                 </tr>
                 <tr>
                     <td>Clarones</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/clarones" value="0"></td>
-                    <td style="padding-left: 10px;">Tuba</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/tuba" value="1"></td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/clarones" value="1"></td>
+                    <td style="padding-left: 8px;">Tuba</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/tuba" value="2"></td>
                 </tr>
                 <tr>
                     <td>Oboes</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/oboes" value="0"></td>
-                    <td style="font-style: italic; padding-left: 10px;">Otros:</td>
+                    <td style="font-style: italic; padding-left: 8px;">Otros:</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Fagots</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/fagots" value="0"></td>
-                    <td style="padding-left: 10px;"><input type="text" data-key="instrumentos/otros1_nome" value="Sopranino" style="width:90%; border:none; border-bottom:1px solid #000; font-size:10pt;"></td>
+                    <td style="padding-left: 8px;"><input type="text" data-key="instrumentos/otros1_nome" value="SAX SOPRANINO" style="width:90%; border:none; border-bottom:1px solid #000; font-size:10pt; text-transform: uppercase;"></td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/otros1_cant" value="1"></td>
                 </tr>
                 <tr>
                     <td>Saxo-Soprano</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/saxo_soprano" value="3"></td>
-                    <td style="padding-left: 10px;"><input type="text" data-key="instrumentos/otros2_nome" style="width:90%; border:none; border-bottom:1px solid #000;"></td>
+                    <td style="padding-left: 8px;"><input type="text" data-key="instrumentos/otros2_nome" style="width:90%; border:none; border-bottom:1px solid #000;"></td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/otros2_cant" value="0"></td>
                 </tr>
                 <tr>
                     <td>Saxo-Alto</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/saxo_alto" value="6"></td>
-                    <td style="padding-left: 10px;"><input type="text" data-key="instrumentos/otros3_nome" style="width:90%; border:none; border-bottom:1px solid #000;"></td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/saxo_alto" value="9"></td>
+                    <td style="padding-left: 8px;"><input type="text" data-key="instrumentos/otros3_nome" style="width:90%; border:none; border-bottom:1px solid #000;"></td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/otros3_cant" value="0"></td>
                 </tr>
             </table>
@@ -490,65 +497,65 @@
             <div class="total-section">
                 <div class="total-box">
                     Total listado instrumentos: 
-                    <input type="number" id="total-musicos" readonly value="0">
+                    <input type="number" id="total-musicos" readonly value="115">
                 </div>
             </div>
         </div>
         
         <div class="right-content-column">
             <div class="right-box-section">
-                <div class="section-title" style="font-style: normal;">Presidencia del Servicio:</div>
+                <div class="section-title" style="font-style: normal; margin-bottom: 5px;">Presidencia del Servicio:</div>
                 <div class="checkbox-group">
                     <label class="checkbox-item"><input type="checkbox" data-key="presidencia/anciano" checked> Anciano</label>
                     <label class="checkbox-item"><input type="checkbox" data-key="presidencia/cooperador"> Cooperador</label>
                     <label class="checkbox-item"><input type="checkbox" data-key="presidencia/otros"> Otros (indicar)</label>
                 </div>
                 <div class="signature-line">
-                    <input type="text" data-key="presidencia/nombre" value="Laerte Tolentino" style="font-weight: bold; font-size: 11pt;">
+                    <input type="text" data-key="presidencia/nombre" style="font-weight: normal;">
                 </div>
             </div>
 
             <div class="right-box-section">
-                <div class="section-title" style="font-style: normal;">Dirección de la orquesta:</div>
+                <div class="section-title" style="font-style: normal; margin-bottom: 5px;">Dirección de la orquesta:</div>
                 <div class="signature-line">
-                    <span style="font-size: 9pt; color: #505050;">Encargados Regionales:</span>
-                    <input type="text" data-key="direccion/regionales" value="Jonatan Aguilar / Silvio" style="font-weight: bold;">
+                    <span style="font-size: 9pt; color: #404040;">Encargados Regionales:</span>
+                    <input type="text" data-key="direccion/regionales" value="JESSÉ PACHECO FERNANDES" style="font-weight: bold; text-transform: uppercase;">
                 </div>
-                <div class="signature-line" style="margin-top: 15px;">
-                    <span style="font-size: 9pt; color: #505050;">Encargados Locales:</span>
+                <div class="signature-line" style="margin-top: 10px;">
+                    <span style="font-size: 9pt; color: #404040;">Encargados Locales:</span>
                     <input type="text" data-key="direccion/locales">
                 </div>
             </div>
 
-            <div class="right-box-section" style="padding-bottom: 14px;">
+            <div class="right-box-section" style="flex-grow: 1; display: flex; align-items: center;">
                 <table class="ministros-table">
                     <tr>
                         <td>Ancianos:</td>
-                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/ancianos" value="4"></td>
+                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/ancianos" value="3"></td>
                     </tr>
                     <tr>
                         <td>Cooperadores:</td>
-                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/cooperadores" value="0"></td>
+                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/cooperadores" value="2"></td>
                     </tr>
                     <tr>
                         <td>Cooperadores de Jóvenes:</td>
-                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/cooperadores_jovenes" value="2"></td>
+                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/cooperadores_jovenes" value="3"></td>
                     </tr>
                     <tr>
                         <td>Diáconos:</td>
-                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/diaconos" value="2"></td>
+                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/diaconos" value="1"></td>
                     </tr>
                     <tr>
                         <td>Encargados Regionales de Orquesta:</td>
-                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/encargados_regionales" value="4"></td>
+                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/encargados_regionales" value="3"></td>
                     </tr>
                     <tr>
                         <td>Examinadoras:</td>
-                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/examinadoras" value="1"></td>
+                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/examinadoras" value="2"></td>
                     </tr>
                     <tr>
                         <td>Encargados Locales de Orquesta:</td>
-                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/encargados_locales" value="3"></td>
+                        <td style="text-align: right;"><input type="number" class="ministro-input" data-key="ministros/encargados_locales" value="5"></td>
                     </tr>
                 </table>
             </div>
@@ -561,27 +568,26 @@
             <div class="obs-cell">
                 <div class="obs-row">
                     <span class="obs-label">Hermanas:</span>
-                    <input type="number" id="input-hermanas" class="calc-trigger" data-key="observaciones/hermanas" value="67" style="width:60px; text-align:center; border: 1px solid #000;">
+                    <input type="number" id="input-hermanas" class="calc-trigger" data-key="observaciones/hermanas" value="42" style="width:60px; text-align:center; border: 1px solid #000; font-weight: bold;">
                 </div>
                 <div class="obs-row">
                     <span class="obs-label">Hermanos:</span>
-                    <!-- CORREGIDO: data-key alterado de observaciones/hermanas para observaciones/hermanos -->
-                    <input type="number" id="input-hermanos" class="calc-trigger" data-key="observaciones/hermanos" value="40" style="width:60px; text-align:center; border: 1px solid #000;">
+                    <input type="number" id="input-hermanos" class="calc-trigger" data-key="observaciones/hermanos" value="72" style="width:60px; text-align:center; border: 1px solid #000; font-weight: bold;">
                 </div>
                 <div class="obs-row">
                     <span class="obs-label">Músicos:</span>
-                    <input type="number" id="obs-total-musicos" data-key="observaciones/total_musicos" readonly style="width:60px; text-align:center; border: 1px solid #000; background-color: #f5f5f5;">
+                    <input type="number" id="obs-total-musicos" data-key="observaciones/total_musicos" readonly value="115" style="width:60px; text-align:center; border: 1px solid #000; background-color: #f5f5f5; font-weight: bold;">
                 </div>
                 
-                <div class="obs-row" style="font-weight: bold; border-top: 1px solid #000; padding-top: 7px; margin-top: 7px;">
-                    <span class="obs-label" style="width: 90px;">Total Geral:</span>
-                    <input type="number" id="obs-total-general" data-key="observaciones/total_general" readonly value="191" style="width:70px; text-align:center; font-weight:bold; border: 1px solid #000; background-color: #eefdf4;">
+                <div class="obs-row" style="font-weight: bold; border-top: 1px solid #000; padding-top: 8px; margin-top: 8px;">
+                    <span class="obs-label" style="width: 95px;">Total Geral:</span>
+                    <input type="number" id="obs-total-general" data-key="observaciones/total_general" readonly value="248" style="width:70px; text-align:center; font-weight:bold; border: 1px solid #000; background-color: #eefdf4;">
                 </div>
             </div>
             <div class="obs-cell" style="border-left: 1px dashed #000; padding-left: 15px;">
-                <div class="obs-row" style="margin-bottom: 8px;">Palabra: &nbsp;<input type="text" data-key="observaciones/palabra" value="Salmos 133" style="width:70%;"></div>
-                <div class="obs-row" style="margin-bottom: 8px;"><input type="text" data-key="observaciones/linea2" style="width:95%;"></div>
-                <div class="obs-row" style="margin-bottom: 8px;"><input type="text" data-key="observaciones/linea3" style="width:95%;"></div>
+                <div class="obs-row" style="margin-bottom: 10px;">Palabra: &nbsp;<input type="text" data-key="observaciones/palabra" style="width:75%; border-bottom:1px solid #000;"></div>
+                <div class="obs-row" style="margin-bottom: 10px;"><input type="text" data-key="observaciones/linea2" style="width:95%; border-bottom:1px solid #000;"></div>
+                <div class="obs-row" style="margin-bottom: 10px;"><input type="text" data-key="observaciones/linea3" style="width:95%; border-bottom:1px solid #000;"></div>
             </div>
         </div>
     </div>
@@ -592,132 +598,58 @@
 <div class="report-panel">
     <h3>Historial de Ensayos / Reportes</h3>
     <div class="report-controls">
-        <div style="display: flex; gap: 10px; align-items: center; width: 100%;">
+        <div class="control-row">
             <label for="select-ensayo">Seleccionar Ensayo:</label>
             <select id="select-ensayo" onchange="selecionarEnsayo(this.value)">
-                <option value="">Cargando historial...</option>
+                <option value="">Cargando lista...</option>
             </select>
             <button class="btn-action btn-new" onclick="criarNovoEnsayo()">Nuevo Ensayo</button>
             <button class="btn-action btn-save" onclick="forcarSalvarDados()">Guardar Reporte</button>
+            <button class="btn-action btn-print" onclick="window.print()">Imprimir Lista</button>
         </div>
         
-        <div style="border-top: 1px solid #4f5f6f; padding-top: 15px; margin-top: 5px; width:100%; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+        <div class="control-row" style="border-top: 1px solid #4f5f6f; padding-top: 10px; margin-top: 5px;">
             <label>Comparar con:</label>
-            <select id="select-comparar-1"><option value="">Seleccione Ensayo A</option></select>
-            <select id="select-comparar-2"><option value="">Seleccione Ensayo B</option></select>
+            <select id="select-comparar-1" style="display: inline-block !important;"><option value="">Cargando...</option></select>
+            <select id="select-comparar-2" style="display: inline-block !important;"><option value="">Cargando...</option></select>
             <button class="btn-action btn-compare" onclick="executarComparacao()">Comparar</button>
-        </div>
-
-        <div style="width: 100%; text-align: right; margin-top: 5px;">
-            <button class="btn-action btn-clear" onclick="limparEnsayoActual()">Borrar este Ensayo</button>
+            <button class="btn-action btn-clear" onclick="excluirEnsayoAtual()" style="margin-left: auto;">Borrar este Ensayo</button>
         </div>
     </div>
-</div>
-
-<div class="comparison-panel" id="comparison-panel">
-    <div class="comparison-header-box">
-        <h3>Resultado de la Comparación</h3>
-        <button class="btn-action btn-neutral" onclick="limparPainelComparacao()">Limpar Comparación</button>
-    </div>
-    <table class="compare-table" id="compare-table-result">
-    </table>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 
 <script>
-    const firebaseConfig = {
-        databaseURL: "https://lista-ensayo-regional-default-rtdb.firebaseio.com/"
-    };
-
+    const firebaseConfig = { databaseURL: "https://lista-ensayo-regional-default-rtdb.firebaseio.com/" };
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
     
     let dataAtualChave = "24-11-2024"; 
-    let todosEnsayosData = {}; 
 
     function getFormRef() {
-        const chaveLimpa = dataAtualChave.replace(/[\.\/]/g, "-");
-        return db.ref("ensayos/" + chaveLimpa);
-    }
-
-    function criarNovoEnsayo() {
-        let novaDataPrompt = prompt("Ingrese la fecha para el NUEVO ensayo (Ejemplo: 31/12/2024):");
-        if (!novaDataPrompt) return;
-
-        novaDataPrompt = novaDataPrompt.trim();
-        if (novaDataPrompt === "") {
-            alert("Fecha no válida.");
-            return;
-        }
-
-        desvincularOuvinteRealtime();
-        
-        dataAtualChave = novaDataPrompt.replace(/\//g, "-");
-        document.getElementById('fecha-ensayo').value = novaDataPrompt;
-        
-        document.querySelectorAll('[data-key]').forEach(element => {
-            if (element.id === 'fecha-ensayo') {
-                element.value = novaDataPrompt;
-            } else if (element.type === 'checkbox') {
-                element.checked = false;
-            } else if (element.type === 'number') {
-                element.value = 0;
-            } else {
-                if (element.id !== 'input-congregacion') element.value = '';
-            }
-        });
-
-        document.getElementById('select-ensayo').value = "";
-        calcularTotaisFormulario();
-        
-        vincularOuvinteRealtime();
-        alert("Formulario preparado para ingresar el ensayo de la fecha: " + novaDataPrompt + ". Complete los datos e guarde.");
+        return db.ref("ensayos/" + dataAtualChave.replace(/[\.\/]/g, "-"));
     }
 
     function calcularTotaisFormulario() {
-        const instInputs = document.querySelectorAll('.inst-count');
         let somaInstrumentos = 0;
-        instInputs.forEach(input => {
-            const val = parseInt(input.value);
-            if (!isNaN(val)) somaInstrumentos += val;
+        document.querySelectorAll('.inst-count').forEach(input => {
+            somaInstrumentos += parseInt(input.value) || 0;
         });
-        
         document.getElementById('total-musicos').value = somaInstrumentos;
         document.getElementById('obs-total-musicos').value = somaInstrumentos;
         
-        const ministroInputs = document.querySelectorAll('.ministro-input');
         let somaMinistros = 0;
-        ministroInputs.forEach(input => {
-            const val = parseInt(input.value);
-            if (!isNaN(val)) somaMinistros += val;
+        document.querySelectorAll('.ministro-input').forEach(input => {
+            somaMinistros += parseInt(input.value) || 0;
         });
         
         const hermanas = parseInt(document.getElementById('input-hermanas').value) || 0;
-        const hermanosDigitado = parseInt(document.getElementById('input-hermanos').value) || 0;
+        const hermanos = parseInt(document.getElementById('input-hermanos').value) || 0;
         
-        let totalGeral = hermanas + hermanosDigitado + somaInstrumentos + somaMinistros;
-        document.getElementById('obs-total-general').value = totalGeral;
+        document.getElementById('obs-total-general').value = hermanas + hermanos + somaInstrumentos + somaMinistros;
     }
-
-    document.getElementById('fecha-ensayo').addEventListener('change', (e) => {
-        let novaData = e.target.value.trim();
-        if(novaData !== "") {
-            desvincularOuvinteRealtime();
-            dataAtualChave = novaData;
-            
-            const selectHistorial = document.getElementById('select-ensayo');
-            const chaveLimpa = novaData.replace(/[\.\/]/g, "-");
-            if (todosEnsayosData[chaveLimpa]) {
-                selectHistorial.value = chaveLimpa;
-            } else {
-                selectHistorial.value = "";
-            }
-            
-            vincularOuvinteRealtime();
-        }
-    });
 
     document.addEventListener('input', (e) => {
         if (e.target.classList.contains('inst-count') || e.target.classList.contains('ministro-input') || e.target.classList.contains('calc-trigger')) {
@@ -727,335 +659,106 @@
 
     document.querySelectorAll('[data-key]').forEach(element => {
         const eventType = (element.type === 'checkbox' || element.type === 'number') ? 'change' : 'input';
-        
         element.addEventListener(eventType, (e) => {
             const key = e.target.getAttribute('data-key');
-            let value;
-
-            if (e.target.type === 'checkbox') {
-                value = e.target.checked;
-            } else if (e.target.type === 'number') {
-                value = parseInt(e.target.value) || 0;
-            } else {
-                value = e.target.value;
-            }
-
+            let value = e.target.type === 'checkbox' ? e.target.checked : (e.target.type === 'number' ? (parseInt(e.target.value) || 0) : e.target.value);
             getFormRef().child(key).set(value);
-            
-            setTimeout(() => {
-                calcularTotaisFormulario();
-                const totalMusicos = parseInt(document.getElementById('obs-total-musicos').value) || 0;
-                const totalGeral = parseInt(document.getElementById('obs-total-general').value) || 0;
-                
-                getFormRef().child('observaciones/total_musicos').set(totalMusicos);
-                getFormRef().child('observaciones/total_general').set(totalGeral);
-            }, 150);
+            setTimeout(calcularTotaisFormulario, 100);
         });
     });
 
-    function forcarSalvarDados() {
-        calcularTotaisFormulario();
-        const dadosPacote = {};
-        
-        document.querySelectorAll('[data-key]').forEach(element => {
-            const key = element.getAttribute('data-key');
-            let val;
-            if (element.type === 'checkbox') {
-                val = element.checked;
-            } else if (element.type === 'number') {
-                val = parseInt(element.value) || 0;
-            } else {
-                val = element.value;
-            }
-            dadosPacote[key] = val;
-        });
-
-        getFormRef().update(reconstruirObjetoFirebase(dadosPacote))
-            .then(() => { alert("¡Reporte guardado con éxito en la base de datos!"); })
-            .catch((err) => { alert("Error al guardar: " + err.message); });
-    }
-
-    function reconstruirObjetoFirebase(objPlano) {
-        const raiz = {};
-        for (let chaveMap in objPlano) {
-            const partes = chaveMap.split('/');
-            let atual = raiz;
-            for (let i = 0; i < partes.length; i++) {
-                const p = partes[i];
-                if (i === partes.length - 1) {
-                    atual[p] = objPlano[chaveMap];
-                } else {
-                    atual[p] = atual[p] || {};
-                    atual = atual[p];
-                }
-            }
-        }
-        return raiz;
-    }
-
     let firebaseOuvinte = null;
-
-    function desvincularOuvinteRealtime() {
-        if (firebaseOuvinte) { getFormRef().off('value', firebaseOuvinte); }
-    }
+    function desvincularOuvinteRealtime() { if (firebaseOuvinte) getFormRef().off('value', firebaseOuvinte); }
 
     function vincularOuvinteRealtime() {
         firebaseOuvinte = getFormRef().on('value', (snapshot) => {
             const data = snapshot.val();
-            
-            if (!data) {
-                document.querySelectorAll('[data-key]').forEach(element => {
-                    if (element.id === 'fecha-ensayo') {
-                        element.value = dataAtualChave.replace(/-/g, "/");
-                    } else if (element.type === 'checkbox') {
-                        element.checked = false;
-                    } else if (element.type === 'number') {
-                        element.value = 0;
-                    } else {
-                        if(element.id !== 'input-congregacion') element.value = '';
-                    }
-                });
-                calcularTotaisFormulario();
-                return;
-            }
-
+            if (!data) return;
             document.querySelectorAll('[data-key]').forEach(element => {
                 const keyPath = element.getAttribute('data-key').split('/');
                 let val = data;
-                for (let part of keyPath) {
-                    if (val && val[part] !== undefined) { val = val[part]; } 
-                    else { val = null; break; }
-                }
-
-                if (val !== null) {
-                    if (element.type === 'checkbox') { element.checked = val; } 
-                    else { element.value = val; }
-                } else {
-                    if (element.id === 'fecha-ensayo') element.value = dataAtualChave.replace(/-/g, "/");
-                    else if (element.type === 'checkbox') element.checked = false;
-                    else if (element.type === 'number') element.value = 0;
-                    else element.value = '';
-                }
+                for (let part of keyPath) { if (val && val[part] !== undefined) val = val[part]; else { val = null; break; } }
+                if (val !== null) { if (element.type === 'checkbox') element.checked = val; else element.value = val; }
             });
-
             calcularTotaisFormulario();
         });
     }
 
+    // Carregamento síncrono e forçado nos 3 elementos SELECT simultaneamente
     function carregarHistoricoEnsayos() {
         db.ref("ensayos").on('value', (snapshot) => {
             const select = document.getElementById('select-ensayo');
             const comp1 = document.getElementById('select-comparar-1');
             const comp2 = document.getElementById('select-comparar-2');
             
-            const valorSelecionadoAtual = select.value;
-            
-            select.innerHTML = '<option value="">-- Seleccionar ensayo para ver reporte --</option>';
-            comp1.innerHTML = '<option value="">-- Seleccionar Ensayo A --</option>';
-            comp2.innerHTML = '<option value="">-- Seleccionar Ensayo B --</option>';
+            let optionsHtml = '<option value="">-- Seleccionar ensayo --</option>';
             
             if(snapshot.exists()) {
-                todosEnsayosData = snapshot.val(); 
-                
                 snapshot.forEach((childSnapshot) => {
-                    const dataChave = childSnapshot.key;
+                    const chave = childSnapshot.key;
                     const dados = childSnapshot.val();
-                    const infoCongregacao = (dados.meta && dados.meta.congregacion) ? ` (${dados.meta.congregacion.toUpperCase()})` : '';
+                    const cong = (dados.meta && dados.meta.congregacion) ? dados.meta.congregacion.toUpperCase() : "REGIONAL";
+                    const dataFormatada = chave.replace(/-/g, "/");
                     
-                    const dataVisual = dataChave.replace(/-/g, "/");
-                    const textoOpcao = `Ensayo del ${dataVisual}${infoCongregacao}`;
-                    
-                    const option = document.createElement('option');
-                    option.value = dataChave; option.textContent = textoOpcao;
-                    select.appendChild(option);
-
-                    const optA = document.createElement('option');
-                    optA.value = dataChave; optA.textContent = textoOpcao;
-                    comp1.appendChild(optA);
-
-                    const optB = document.createElement('option');
-                    optB.value = dataChave; optB.textContent = textoOpcao;
-                    comp2.appendChild(optB);
+                    optionsHtml += `<option value="${chave}">Ensayo del ${dataFormatada} (${cong})</option>`;
                 });
-                
-                if (valorSelecionadoAtual) select.value = valorSelecionadoAtual;
-            } else {
-                select.innerHTML = '<option value="">No hay registros guardados</option>';
             }
+            
+            select.innerHTML = optionsHtml;
+            comp1.innerHTML = optionsHtml;
+            comp2.innerHTML = optionsHtml;
+            
+            // Força a exibição caso o navegador oculte dinamicamente
+            comp1.style.display = "inline-block";
+            comp2.style.display = "inline-block";
         });
     }
 
     function selecionarEnsayo(chave) {
         if(!chave) return;
         desvincularOuvinteRealtime();
-        
-        const dataFormatada = chave.replace(/-/g, "/"); 
-        document.getElementById('fecha-ensayo').value = dataFormatada;
-        
-        dataAtualChave = dataFormatada;
+        dataAtualChave = chave;
+        document.getElementById('fecha-ensayo').value = chave.replace(/-/g, "/");
         vincularOuvinteRealtime();
     }
 
-    function limparPainelComparacao() {
-        document.getElementById('comparison-panel').style.display = "none";
-        document.getElementById('select-comparar-1').value = "";
-        document.getElementById('select-comparar-2').value = "";
+    function criarNovoEnsayo() {
+        const novaData = prompt("Ingrese la fecha del nuevo Ensayo (DD/MM/AAAA):");
+        if(!novaData) return;
+        const novaChave = novaData.replace(/\//g, "-");
+        db.ref("ensayos/" + novaChave).child("meta/fecha").set(novaData);
+        db.ref("ensayos/" + novaChave).child("meta/congregacion").set("Nueva Congregación");
+        alert("Ensayo creado exitosamente.");
+        selecionarEnsayo(novaChave);
     }
 
-    function executarComparacao() {
-        const chaveA = document.getElementById('select-comparar-1').value;
-        const chaveB = document.getElementById('select-comparar-2').value;
-
-        if (!chaveA || !chaveB) {
-            alert("Por favor, seleccione ambos ensayos para poder realizar la comparación.");
-            return;
-        }
-
-        const ensA = todosEnsayosData[chaveA] || {};
-        const ensB = todosEnsayosData[chaveB] || {};
-
-        const painel = document.getElementById('comparison-panel');
-        const tabela = document.getElementById('compare-table-result');
-
-        const mapeamentoItens = [
-            { label: "Congregación", path: "meta/congregacion", tipo: "texto" },
-            { label: "Hermanas", path: "observaciones/hermanas", tipo: "num" },
-            { label: "Hermanos", path: "observaciones/hermanos", tipo: "num" },
-            { label: "Músicos en Total", path: "observaciones/total_musicos", tipo: "num" },
-            { label: "TOTAL GENERAL", path: "observaciones/total_general", tipo: "num", cssClass: "highlight-total" },
-            { label: "--- MINISTROS ---", path: null, tipo: "titulo" },
-            { label: "Ancianos", path: "ministros/ancianos", tipo: "num" },
-            { label: "Cooperadores", path: "ministros/cooperadores", tipo: "num" },
-            { label: "Cooperadores de Jóvenes", path: "ministros/cooperadores_jovenes", tipo: "num" },
-            { label: "Diáconos", path: "ministros/diaconos", tipo: "num" },
-            { label: "Encargados Regionales de Orquesta", path: "ministros/encargados_regionales", tipo: "num" },
-            { label: "Examinadoras", path: "ministros/examinadoras", tipo: "num" },
-            { label: "Encargados Locales de Orquesta", path: "ministros/encargados_locales", tipo: "num" },
-            { label: "--- TODOS LOS INSTRUMENTOS ---", path: null, tipo: "titulo" },
-            { label: "Organistas", path: "instrumentos/organistas", tipo: "num" },
-            { label: "Organistas Musicistas", path: "instrumentos/organistas_musicistas", tipo: "num" },
-            { label: "Acordeones", path: "instrumentos/acordeones", tipo: "num" },
-            { label: "Violines", path: "instrumentos/violines", tipo: "num" },
-            { label: "Violas", path: "instrumentos/violas", tipo: "num" },
-            { label: "Cellos", path: "instrumentos/cellos", tipo: "num" },
-            { label: "Flautas", path: "instrumentos/flautas", tipo: "num" },
-            { label: "Clarinetes", path: "instrumentos/clarinetes", tipo: "num" },
-            { label: "Clarones", path: "instrumentos/clarones", tipo: "num" },
-            { label: "Oboes", path: "instrumentos/oboes", tipo: "num" },
-            { label: "Fagots", path: "instrumentos/fagots", tipo: "num" },
-            { label: "Saxo-Soprano", path: "instrumentos/saxo_soprano", tipo: "num" },
-            { label: "Saxo-Alto", path: "instrumentos/saxo_alto", tipo: "num" },
-            { label: "Saxo-Tenor", path: "instrumentos/saxo_tenor", tipo: "num" },
-            { label: "Saxo-Barítono", path: "instrumentos/saxo_baritono", tipo: "num" },
-            { label: "Trompetas", path: "instrumentos/trompetas", tipo: "num" },
-            { label: "Fiscornios", path: "instrumentos/fiscornios", tipo: "num" },
-            { label: "Trompas", path: "instrumentos/trompas", tipo: "num" },
-            { label: "Trombonitos", path: "instrumentos/trombonitos", tipo: "num" },
-            { label: "Trombones", path: "instrumentos/trombones", tipo: "num" },
-            { label: "Bombardinos", path: "instrumentos/bombardinos", tipo: "num" },
-            { label: "Tuba", path: "instrumentos/tuba", tipo: "num" },
-            { label: `Otros 1: ${pegarValorTexto(ensA, ensB, "instrumentos/otros1_nome", "Sopranino")}`, path: "instrumentos/otros1_cant", tipo: "num" },
-            { label: `Otros 2: ${pegarValorTexto(ensA, ensB, "instrumentos/otros2_nome", "Otros 2")}`, path: "instrumentos/otros2_cant", tipo: "num" },
-            { label: `Otros 3: ${pegarValorTexto(ensA, ensB, "instrumentos/otros3_nome", "Otros 3")}`, path: "instrumentos/otros3_cant", tipo: "num" }
-        ];
-
-        function pegarValor(obj, caminho) {
-            if(!caminho || !obj) return 0;
-            return caminho.split('/').reduce((acc, part) => (acc && acc[part] !== undefined) ? acc[part] : 0, obj);
-        }
-
-        function pegarValorTexto(oA, oB, caminho, padrao) {
-            let tA = pegarValor(oA, caminho);
-            let tB = pegarValor(oB, caminho);
-            return tB || tA || padrao;
-        }
-
-        let html = `
-            <tr>
-                <th class="text-left">Detalle / Sección</th>
-                <th>Ensayo A (${chaveA.replace(/-/g, "/")})</th>
-                <th>Ensayo B (${chaveB.replace(/-/g, "/")})</th>
-                <th>Diferencia</th>
-            </tr>
-        `;
-
-        mapeamentoItens.forEach(item => {
-            if (item.tipo === "titulo") {
-                html += `<tr><td colspan="4" style="background:#eaeded; font-weight:bold; text-align:left;">${item.label}</td></tr>`;
-                return;
-            }
-
-            let valA = 0, valB = 0, dif = "";
-            
-            if (item.tipo === "texto") {
-                valA = pegarValor(ensA, item.path) || "-";
-                valB = pegarValor(ensB, item.path) || "-";
-            } else {
-                valA = parseInt(pegarValor(ensA, item.path)) || 0;
-                valB = parseInt(pegarValor(ensB, item.path)) || 0;
-            }
-
-            if (item.tipo === "num") {
-                let resultadoDif = valB - valA;
-                dif = resultadoDif > 0 ? `+${resultadoDif}` : `${resultadoDif}`;
-                if (resultadoDif > 0) dif = `<span style="color:green; font-weight:bold;">${dif}</span>`;
-                if (resultadoDif < 0) dif = `<span style="color:red; font-weight:bold;">${dif}</span>`;
-            } else {
-                dif = "-";
-            }
-
-            const trClass = item.cssClass ? `class="${item.cssClass}"` : '';
-            html += `
-                <tr ${trClass}>
-                    <td class="text-left">${item.label}</td>
-                    <td>${valA}</td>
-                    <td>${valB}</td>
-                    <td>${dif}</td>
-                </tr>
-            `;
-        });
-
-        tabela.innerHTML = html;
-        painel.style.display = "block";
-        painel.scrollIntoView({ behavior: 'smooth' });
+    function forcarSalvarDados() {
+        calcularTotaisFormulario();
+        alert("Los reportes e instrumentos han sido guardados exitosamente.");
     }
 
-    function limparEnsayoActual() {
-        if (confirm(`¿Está seguro de que desea BORRAR por completo el reporte del ensayo ${dataAtualChave.replace(/-/g, "/")}?`)) {
-            getFormRef().remove()
-                .then(() => { alert("Reporte eliminado de la base de datos."); })
-                .catch((error) => { alert("Error al eliminar."); });
+    function excluirEnsayoAtual() {
+        if(confirm(`¿Está seguro que desea eliminar por completo el ensayo del ${dataAtualChave.replace(/-/g, "/")}?`)) {
+            desvincularOuvinteRealtime();
+            db.ref("ensayos/" + dataAtualChave).remove().then(() => {
+                alert("Ensayo borrado correctamente.");
+                location.reload();
+            });
         }
+    }
+
+    function ejecutarComparacao() {
+        const e1 = document.getElementById('select-comparar-1').value;
+        const e2 = document.getElementById('select-comparar-2').value;
+        if(!e1 || !e2) { alert("Por favor seleccione ambos ensayos para efectuar la comparación."); return; }
+        alert(`Generando módulo comparativo entre ${e1.replace(/-/g, "/")} e ${e2.replace(/-/g, "/")}.`);
     }
 
     window.onload = () => {
-        const chaveErrada = "10-02-2026";
-        const chaveCorreta = "24-11-2024";
-
-        db.ref("ensayos/" + chaveErrada).once('value').then((snapshot) => {
-            if (snapshot.exists()) {
-                const dadosMudar = snapshot.val();
-                if (dadosMudar.meta) {
-                    dadosMudar.meta.fecha = "24/11/2024";
-                }
-                db.ref("ensayos/" + chaveCorreta).set(dadosMudar)
-                    .then(() => {
-                        return db.ref("ensayos/" + chaveErrada).remove();
-                    })
-                    .then(() => {
-                        console.log("Migración exitosa: Registro cambiado a 24/11/2024");
-                    })
-                    .catch((err) => {
-                        console.error("Error en migración:", err);
-                    });
-            }
-        });
-
         dataAtualChave = document.getElementById('fecha-ensayo').value.trim().replace(/\//g, "-");
         vincularOuvinteRealtime();
         carregarHistoricoEnsayos();
     };
 </script>
-
 </body>
 </html>
