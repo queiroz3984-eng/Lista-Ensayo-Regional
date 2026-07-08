@@ -702,21 +702,24 @@
     function calcularTotaisFormulario() {
         let somaInstrumentos = 0;
         document.querySelectorAll('.inst-count').forEach(input => {
+            if (input.getAttribute('data-key') !== 'instrumentos/organistas_musicistas') {
             somaInstrumentos += parseInt(input.value) || 0;
-        });
-        document.getElementById('total-musicos').value = somaInstrumentos;
-        document.getElementById('obs-total-musicos').value = somaInstrumentos;
-        
-        let somaMinistros = 0;
-        document.querySelectorAll('.ministro-input').forEach(input => {
-            somaMinistros += parseInt(input.value) || 0;
-        });
-        
-        const hermanas = parseInt(document.getElementById('input-hermanas').value) || 0;
-        const hermanos = parseInt(document.getElementById('input-hermanos').value) || 0;
-        
-        document.getElementById('obs-total-general').value = hermanas + hermanos + somaInstrumentos + somaMinistros;
-    }
+        }
+    });
+    
+    document.getElementById('total-musicos').value = somaInstrumentos;
+    document.getElementById('obs-total-musicos').value = somaInstrumentos;
+    
+    let somaMinistros = 0;
+    document.querySelectorAll('.ministro-input').forEach(input => {
+        somaMinistros += parseInt(input.value) || 0;
+    });
+    
+    const hermanas = parseInt(document.getElementById('input-hermanas').value) || 0;
+    const hermanos = parseInt(document.getElementById('input-hermanos').value) || 0;
+    
+    document.getElementById('obs-total-general').value = hermanas + hermanos + somaInstrumentos + somaMinistros;
+}
 
     document.addEventListener('input', (e) => {
         if (e.target.classList.contains('inst-count') || e.target.classList.contains('ministro-input') || e.target.classList.contains('calc-trigger')) {
