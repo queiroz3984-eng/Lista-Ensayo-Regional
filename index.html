@@ -792,14 +792,58 @@
         vincularOuvinteRealtime();
     }
 
+    function definirValorObjeto(obj, caminho, valor) {
+        const partes = caminho.split('/');
+        let atual = obj;
+        partes.forEach((parte, index) => {
+            if (index === partes.length - 1) {
+                atual[parte] = valor;
+            } else {
+                atual[parte] = atual[parte] || {};
+                atual = atual[parte];
+            }
+        });
+    }
+
+    function limparFormularioParaNovoEnsayo(novaData) {
+        const dadosVazios = {};
+
+        document.querySelectorAll('[data-key]').forEach(element => {
+            const key = element.getAttribute('data-key');
+            let valor = '';
+
+            if (element.type === 'checkbox') {
+                element.checked = false;
+                valor = false;
+            } else if (element.type === 'number') {
+                element.value = '';
+                valor = '';
+            } else {
+                element.value = '';
+            }
+
+            definirValorObjeto(dadosVazios, key, valor);
+        });
+
+        document.getElementById('fecha-ensayo').value = novaData;
+        definirValorObjeto(dadosVazios, 'meta/fecha', novaData);
+        definirValorObjeto(dadosVazios, 'meta/congregacion', '');
+        calcularTotaisFormulario();
+
+        return dadosVazios;
+    }
+
     function criarNovoEnsayo() {
         const novaData = prompt("Ingrese la fecha del nuevo Ensayo (DD/MM/AAAA):");
         if(!novaData) return;
         const novaChave = novaData.replace(/\//g, "-");
-        db.ref("ensayos/" + novaChave).child("meta/fecha").set(novaData);
-        db.ref("ensayos/" + novaChave).child("meta/congregacion").set("Nueva Congregación");
-        alert("Ensayo creado exitosamente.");
-        selecionarEnsayo(novaChave);
+        const dadosVazios = limparFormularioParaNovoEnsayo(novaData);
+
+        desvincularOuvinteRealtime();
+        db.ref("ensayos/" + novaChave).set(dadosVazios).then(() => {
+            alert("Ensayo creado exitosamente.");
+            selecionarEnsayo(novaChave);
+        });
     }
 
     function forcarSalvarDados() {
