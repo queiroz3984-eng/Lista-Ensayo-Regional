@@ -482,11 +482,11 @@
                 </tr>
                 <tr>
                     <td>Organistas</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/organistas" value="28"></td>
+                    <td><input type="number" id="total-organistas-exibido" class="inst-count" data-key="instrumentos/organistas" value="28"></td>
                     <td style="padding-left: 8px;">Saxo-Tenor</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/saxo_tenor" value="4"></td>
                 </tr>
-                <tr>
+                <tr id="linha-organistas-musicistas" style="display:none;">
                     <td>Organistas Musicistas</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/organistas_musicistas" value="0"></td>
                     <td style="padding-left: 8px;">Saxo-Barítono</td>
@@ -702,25 +702,36 @@
 
     function calcularTotaisFormulario() {
         let somaInstrumentos = 0;
+        let organistas = 0;
+        let organistasMusicistas = 0;
+
         document.querySelectorAll('.inst-count').forEach(input => {
-            if (input.getAttribute('data-key') !== 'instrumentos/organistas_musicistas') {
-            somaInstrumentos += parseInt(input.value) || 0;
-        }
-    });
-    
-    document.getElementById('total-musicos').value = somaInstrumentos;
-    document.getElementById('obs-total-musicos').value = somaInstrumentos;
-    
-    let somaMinistros = 0;
-    document.querySelectorAll('.ministro-input').forEach(input => {
-        somaMinistros += parseInt(input.value) || 0;
-    });
-    
-    const hermanas = parseInt(document.getElementById('input-hermanas').value) || 0;
-    const hermanos = parseInt(document.getElementById('input-hermanos').value) || 0;
-    
-    document.getElementById('obs-total-general').value = hermanas + hermanos + somaInstrumentos + somaMinistros;
-}
+            const key = input.getAttribute('data-key');
+            const valor = parseInt(input.value) || 0;
+            if (key === 'instrumentos/organistas') { organistas = valor; return; }
+            if (key === 'instrumentos/organistas_musicistas') { organistasMusicistas = valor; return; }
+            somaInstrumentos += valor;
+        });
+
+        // Organistas Musicistas ficam ocultas, mas são somadas junto com Organistas.
+        // O valor de Organistas Musicistas NÃO é contado novamente como instrumento.
+        const totalOrganistas = organistas + organistasMusicistas;
+        const campoOrganistas = document.getElementById('total-organistas-exibido');
+        if (campoOrganistas) campoOrganistas.value = totalOrganistas;
+        somaInstrumentos += totalOrganistas;
+
+        document.getElementById('total-musicos').value = somaInstrumentos;
+        document.getElementById('obs-total-musicos').value = somaInstrumentos;
+
+        let somaMinistros = 0;
+        document.querySelectorAll('.ministro-input').forEach(input => {
+            somaMinistros += parseInt(input.value) || 0;
+        });
+
+        const hermanas = parseInt(document.getElementById('input-hermanas').value) || 0;
+        const hermanos = parseInt(document.getElementById('input-hermanos').value) || 0;
+        document.getElementById('obs-total-general').value = hermanas + hermanos + somaInstrumentos + somaMinistros;
+    }
 
     document.addEventListener('input', (e) => {
         if (e.target.classList.contains('inst-count') || e.target.classList.contains('ministro-input') || e.target.classList.contains('calc-trigger')) {
@@ -906,7 +917,6 @@
 
     const camposInstrumentosComparacion = [
         { rotulo: 'Organistas', caminho: 'instrumentos/organistas' },
-        { rotulo: 'Organistas Musicistas', caminho: 'instrumentos/organistas_musicistas' },
         { rotulo: 'Acordeones', caminho: 'instrumentos/acordeones' },
         { rotulo: 'Violines', caminho: 'instrumentos/violines' },
         { rotulo: 'Violas', caminho: 'instrumentos/violas' },
@@ -933,7 +943,12 @@
     ];
 
     function totalCamposComparacion(dados, campos) {
-        return campos.reduce((total, item) => total + numeroComparacion(dados, item.caminho), 0);
+        return campos.reduce((total, item) => {
+            if (item.caminho === 'instrumentos/organistas') {
+                return total + numeroComparacion(dados, 'instrumentos/organistas') + numeroComparacion(dados, 'instrumentos/organistas_musicistas');
+            }
+            return total + numeroComparacion(dados, item.caminho);
+        }, 0);
     }
 
     function montarResultadoComparacion(chaveA, chaveB, dadosA, dadosB) {
@@ -972,7 +987,13 @@
                 const nome = nomeB || nomeA;
                 if (nome) rotulo = rotulo.replace(/: .*/, `: ${nome}`);
             }
-            linhas += linhaComparacao(rotulo, numeroComparacion(dadosA, item.caminho), numeroComparacion(dadosB, item.caminho));
+            let valorA = numeroComparacion(dadosA, item.caminho);
+            let valorB = numeroComparacion(dadosB, item.caminho);
+            if (item.caminho === 'instrumentos/organistas') {
+                valorA += numeroComparacion(dadosA, 'instrumentos/organistas_musicistas');
+                valorB += numeroComparacion(dadosB, 'instrumentos/organistas_musicistas');
+            }
+            linhas += linhaComparacao(rotulo, valorA, valorB);
         });
 
         return `
