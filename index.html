@@ -702,23 +702,20 @@
 
     function calcularTotaisFormulario() {
         let somaInstrumentos = 0;
-        let organistas = 0;
         let organistasMusicistas = 0;
 
+        // O campo Organistas já inclui as Organistas Musicistas.
+        // Por isso, elas são subtraídas do total listado para não haver dupla contagem.
         document.querySelectorAll('.inst-count').forEach(input => {
             const key = input.getAttribute('data-key');
             const valor = parseInt(input.value) || 0;
-            if (key === 'instrumentos/organistas') { organistas = valor; return; }
-            if (key === 'instrumentos/organistas_musicistas') { organistasMusicistas = valor; return; }
             somaInstrumentos += valor;
+            if (key === 'instrumentos/organistas_musicistas') {
+                organistasMusicistas = valor;
+            }
         });
 
-        // Organistas Musicistas ficam ocultas, mas são somadas junto com Organistas.
-        // O valor de Organistas Musicistas NÃO é contado novamente como instrumento.
-        const totalOrganistas = organistas + organistasMusicistas;
-        const campoOrganistas = document.getElementById('total-organistas-exibido');
-        if (campoOrganistas) campoOrganistas.value = totalOrganistas;
-        somaInstrumentos += totalOrganistas;
+        somaInstrumentos = Math.max(0, somaInstrumentos - organistasMusicistas);
 
         document.getElementById('total-musicos').value = somaInstrumentos;
         document.getElementById('obs-total-musicos').value = somaInstrumentos;
@@ -730,7 +727,8 @@
 
         const hermanas = parseInt(document.getElementById('input-hermanas').value) || 0;
         const hermanos = parseInt(document.getElementById('input-hermanos').value) || 0;
-        document.getElementById('obs-total-general').value = hermanas + hermanos + somaInstrumentos + somaMinistros;
+        document.getElementById('obs-total-general').value =
+            hermanas + hermanos + somaInstrumentos + somaMinistros;
     }
 
     document.addEventListener('input', (e) => {
