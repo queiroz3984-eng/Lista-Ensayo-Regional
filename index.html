@@ -152,6 +152,8 @@
             font-size: 10.5pt;
             vertical-align: middle;
         }
+        .organista-musicista-oculto { display: none !important; }
+
         .instrumentos-table input[type="number"] {
             width: 45px;
             height: 24px;
@@ -396,7 +398,9 @@
             .right-box-section { padding: 10px; margin-bottom: 8px; }
             .right-box-section:last-child { margin-bottom: 0; }
             .instrumentos-table td { padding: 3px 2px; font-size: 10pt; }
-            .instrumentos-table input[type="number"] { height: 22px; font-size: 10pt; }
+            .organista-musicista-oculto { display: none !important; }
+
+        .instrumentos-table input[type="number"] { height: 22px; font-size: 10pt; }
             .ministros-table td { padding: 4px 2px; font-size: 10pt; }
             .ministros-table input[type="number"] { height: 22px; font-size: 10pt; }
             .total-section { margin-top: 10px; padding-top: 8px; }
@@ -481,80 +485,80 @@
                     <th style="width: 48px;">Cant.</th>
                 </tr>
                 <tr>
-                    <td>Organistas</td>
-                    <td><input type="number" id="total-organistas-exibido" class="inst-count" data-key="instrumentos/organistas" value="28"></td>
+                                        <td>Organistas</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/organistas" value="28"></td>
                     <td style="padding-left: 8px;">Saxo-Tenor</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/saxo_tenor" value="4"></td>
                 </tr>
-                <tr id="linha-organistas-musicistas" style="display:none;">
-                    <td>Organistas Musicistas</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/organistas_musicistas" value="0"></td>
+                <tr>
+                                        <td>Acordeones</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/acordeones" value="2"></td>
                     <td style="padding-left: 8px;">Saxo-Barítono</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/saxo_baritono" value="1"></td>
                 </tr>
                 <tr>
-                    <td>Acordeones</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/acordeones" value="2"></td>
+                                        <td>Violines</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/violines" value="23"></td>
                     <td style="padding-left: 8px;">Trompetas</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/trompetas" value="10"></td>
                 </tr>
                 <tr>
-                    <td>Violines</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/violines" value="23"></td>
+                                        <td>Violas</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/violas" value="2"></td>
                     <td style="padding-left: 8px;">Fiscornios</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/fiscornios" value="0"></td>
                 </tr>
                 <tr>
-                    <td>Violas</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/violas" value="2"></td>
+                                        <td>Cellos</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/cellos" value="2"></td>
                     <td style="padding-left: 8px;">Trompas</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/trompas" value="0"></td>
                 </tr>
                 <tr>
-                    <td>Cellos</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/cellos" value="2"></td>
+                                        <td>Flautas</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/flautas" value="7"></td>
                     <td style="padding-left: 8px;">Trombonitos</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/trombonitos" value="1"></td>
                 </tr>
                 <tr>
-                    <td>Flautas</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/flautas" value="7"></td>
+                                        <td>Clarinetes</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/clarinetes" value="10"></td>
                     <td style="padding-left: 8px;">Trombones</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/trombones" value="4"></td>
                 </tr>
                 <tr>
-                    <td>Clarinetes</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/clarinetes" value="10"></td>
+                                        <td>Clarones</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/clarones" value="1"></td>
                     <td style="padding-left: 8px;">Bombardinos</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/bombardinos" value="5"></td>
                 </tr>
                 <tr>
-                    <td>Clarones</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/clarones" value="1"></td>
+                                        <td>Oboes</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/oboes" value="0"></td>
                     <td style="padding-left: 8px;">Tuba</td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/tuba" value="2"></td>
                 </tr>
                 <tr>
-                    <td>Oboes</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/oboes" value="0"></td>
+                                        <td>Fagots</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/fagots" value="0"></td>
                     <td style="font-style: italic; padding-left: 8px;">Otros:</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Fagots</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/fagots" value="0"></td>
+                                        <td>Saxo-Soprano</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/saxo_soprano" value="3"></td>
                     <td style="padding-left: 8px;"><input type="text" data-key="instrumentos/otros1_nome" value="SAX SOPRANINO" style="width:90%; border:none; border-bottom:1px solid #000; font-size:10pt; text-transform: uppercase;"></td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/otros1_cant" value="1"></td>
                 </tr>
                 <tr>
-                    <td>Saxo-Soprano</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/saxo_soprano" value="3"></td>
+                                        <td>Saxo-Alto</td>
+                    <td><input type="number" class="inst-count" data-key="instrumentos/saxo_alto" value="9"></td>
                     <td style="padding-left: 8px;"><input type="text" data-key="instrumentos/otros2_nome" style="width:90%; border:none; border-bottom:1px solid #000;"></td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/otros2_cant" value="0"></td>
                 </tr>
                 <tr>
-                    <td>Saxo-Alto</td>
-                    <td><input type="number" class="inst-count" data-key="instrumentos/saxo_alto" value="9"></td>
+                    <td></td>
+                    <td></td>
                     <td style="padding-left: 8px;"><input type="text" data-key="instrumentos/otros3_nome" style="width:90%; border:none; border-bottom:1px solid #000;"></td>
                     <td><input type="number" class="inst-count" data-key="instrumentos/otros3_cant" value="0"></td>
                 </tr>
